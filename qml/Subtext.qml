@@ -14,13 +14,15 @@ EntityBase {
         anchors.centerIn: parent
         AppText {
             id: text
+            width: dp(200)
             color: "white"
             text: str
-//            horizontalAlignment: Text.AlignRight
+            horizontalAlignment: Text.AlignRight
         }
 
         AppTextEdit {
             id: textEdit
+            width: dp(200)
             anchors.verticalCenter: text.verticalCenter
             color: "white"
             placeholderText: ans
