@@ -51,5 +51,4 @@ macx {
 }
 
 DISTFILES += \
-    qml/Subtext.qml \
-    qml/Subtextedit.qml
+    qml/Subtext.qml
