@@ -104,14 +104,15 @@ App {
                 if (currIdx >= 0 && currIdx !== prevIdx) {
                     entityManager.removeAllEntities()
 
-                    var currStr = str[currIdx][0]
-                    var currAns = ans[currIdx][0]
+                    var currStr = str[currIdx]
+                    var currAns = ans[currIdx]
 
-                    if (currAns !== null && currAns !== "") {
-                        currAns = currAns.replace(/.?/g, '_')
-                        pause = true
-                    } else {
-                        pause = false
+                    pause = false
+                    for(var i=0; i<currAns.length; i++) {
+                        if(currAns[i] !== "") {
+                            currAns[i] = currAns[i].replace(/.?/g, '_')
+                            pause = true
+                        }
                     }
 
                     var props = {
@@ -120,6 +121,7 @@ App {
                         width: page.width,
                         str: currStr,
                         ans: currAns,
+                        repeats: currStr.length,
                         entityId: "SubText",
                         video: video
                     }
@@ -241,9 +243,6 @@ App {
             } else {
                 ansMatch = [""]
             }
-
-            console.log(strMatch)
-            console.log(ansMatch)
 
             return [strMatch, ansMatch]
         }

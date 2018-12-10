@@ -6,30 +6,38 @@ EntityBase {
     id: subTextEntity
     entityType: "subtext"
 
-    property string str: ""
-    property string ans: ""
+    property var str: [""]
+    property var ans: [""]
     property var video: null
+    property int repeats: 1
 
     Row{
         anchors.centerIn: parent
-        AppText {
-            id: text
-            width: dp(200)
-            color: "white"
-            text: str
-            horizontalAlignment: Text.AlignRight
-        }
+        Repeater {
+            id: repeater
+            model: repeats
 
-        AppTextEdit {
-            id: textEdit
-            width: dp(200)
-            anchors.verticalCenter: text.verticalCenter
-            color: "white"
-            placeholderText: ans
-            Keys.onReturnPressed: {
-                focus = false
-                video.play()
-                video.focus = true
+            Row {
+                AppText {
+                    id: text
+                    width: dp(200)
+                    color: "white"
+                    text: str[index]
+                    horizontalAlignment: Text.AlignRight
+                }
+
+                AppTextEdit {
+                    id: textEdit
+                    width: dp(200)
+                    anchors.verticalCenter: text.verticalCenter
+                    color: "white"
+                    placeholderText: ans[index]
+                    Keys.onReturnPressed: {
+                        focus = false
+                        video.play()
+                        video.focus = true
+                    }
+                }
             }
         }
     }
