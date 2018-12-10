@@ -20,7 +20,7 @@ App {
         id: page
 
         Component.onCompleted: {
-            var res = parseJson("../assets/subs.json")
+            parseJson("../assets/subs.json")
         }
 
         Rectangle {
@@ -83,7 +83,6 @@ App {
                     video.play()
                 }
             }
-            Keys.onReturnPressed: video.playbackState === MediaPlayer.PausedState ? video.play() : 0
         }
     }
 
@@ -198,16 +197,51 @@ App {
     }
 
     function strSplit(str) {
-        var strMatch = str.match(/^[^<].+?<|>.*?<|>.+$/g)
-        if (strMatch !== null) {
-            for (var i=0; i<strMatch.length; i++){
-                strMatch[i] = strMatch[i].replace(/<|>/g, '');
+        var strRe = /^[^<].+?<|>.*?<|>.+$/g
+        var ansRe = /<.*?>/g
+
+        var strIdx = []
+        var ansIdx = []
+
+        var match = strRe.exec(str)
+        while (match != null) {
+            strIdx.push(match.index)
+            match = strRe.exec(str)
+        }
+
+        match = ansRe.exec(str)
+        while (match != null) {
+            ansIdx.push(match.index)
+            match = ansRe.exec(str)
+        }
+
+        if (strIdx.length > 0 || ansIdx.length>0) {
+            var strMatch = str.match(/^[^<].+?<|>.*?<|>.+$/g)
+            if(strMatch !== null) {
+                for (var i=0; i<strMatch.length; i++){
+                    strMatch[i] = strMatch[i].replace(/<|>/g, '');
+                }
+
+                if(strIdx[0] > ansIdx[0]) {
+                    strMatch.unshift("")
+                }
+            } else {
+                strMatch = [""]
             }
 
             var ansMatch = str.match(/<.*?>/g)
-            for (i=0; i<ansMatch.length; i++){
-                ansMatch[i] = ansMatch[i].replace(/<|>/g, '');
+            if (ansMatch !== null) {
+                for (i=0; i<ansMatch.length; i++){
+                    ansMatch[i] = ansMatch[i].replace(/<|>/g, '');
+                }
+
+                if(strIdx[strIdx.length-1] > ansIdx[ansIdx.length-1]) {
+                    ansMatch.push("")
+                }
+            } else {
+                ansMatch = [""]
             }
+
             console.log(strMatch)
             console.log(ansMatch)
 
