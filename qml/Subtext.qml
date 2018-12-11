@@ -10,6 +10,7 @@ EntityBase {
     property var ans: [""]
     property var video: null
     property int repeats: 1
+    property alias repeater: repeater
 
     Row{
         anchors.centerIn: parent
@@ -18,17 +19,18 @@ EntityBase {
             model: repeats
 
             Row {
+                property var txtObj: [text, textEdit, textEditText]
                 AppText {
                     id: text
-                    width: dp(200)
+                    width: 0
                     color: "white"
                     text: str[index]
-                    horizontalAlignment: Text.AlignRight
+                    horizontalAlignment: Text.AlignLeft
                 }
 
                 AppTextEdit {
                     id: textEdit
-                    width: dp(200)
+                    width: 0
                     anchors.verticalCenter: text.verticalCenter
                     color: "white"
                     placeholderText: ans[index]
@@ -37,6 +39,15 @@ EntityBase {
                         video.play()
                         video.focus = true
                     }
+                }
+
+                AppText {
+                    id: textEditText
+                    width: 0
+                    visible: false
+                    color: "white"
+                    text: ans[index]
+                    horizontalAlignment: Text.AlignLeft
                 }
             }
         }

@@ -92,6 +92,7 @@ App {
         running: video.playbackState === MediaPlayer.PlayingState
         repeat: true
         onTriggered: {
+
             var currTime = video.position
 
             if (currIdx !== -1 && pause && !readyToDelete && currTime >= endTime[currIdx]) {
@@ -117,7 +118,7 @@ App {
 
                     var props = {
                         x: 0,
-                        y: page.height - 80,
+                        y: page.height - 40,
                         width: page.width,
                         str: currStr,
                         ans: currAns,
@@ -126,10 +127,17 @@ App {
                         video: video
                     }
 
-                    entityManager.createEntityFromUrlWithProperties(
+                    var entityId = entityManager.createEntityFromUrlWithProperties(
                                 Qt.resolvedUrl("Subtext.qml"),
                                 props
                             );
+                    var entity = entityManager.getEntityById(entityId)
+
+                    for(i=0; i<currStr.length; i++) {
+                        var txtObj = entity.repeater.itemAt(i).txtObj
+                        txtObj[0].width = txtObj[0].paintedWidth
+                        txtObj[1].width = txtObj[2].paintedWidth
+                    }
 
                     prevIdx = currIdx
                     readyToDelete = false
