@@ -1,0 +1,6 @@
+# videos
+*.m4v
+*.mp4
+
+# IDE files
+*.pro.user
