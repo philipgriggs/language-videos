@@ -36,6 +36,7 @@ import QtQuick 2.1
                  anchors.fill: parent
                  onClicked: {
                      value = mouseX / slider.width
+                     video.seek(value * video.duration)
                  }
              }
          }
@@ -56,6 +57,7 @@ import QtQuick 2.1
                  anchors.fill: parent
                  onClicked: {
                      value = mouseX / slider.width
+                     video.seek(value * video.duration)
                  }
              }
          }
@@ -65,7 +67,7 @@ import QtQuick 2.1
              id: grip
              property real value: 0
              x: (value * parent.width) - width/2
-             anchors.verticalCenter: parent.verticalCenter
+             anchors.verticalCenter: background.verticalCenter
              width: Math.max(dp(48), root.gripSize)
              height: width
              radius: width/2
@@ -100,6 +102,7 @@ import QtQuick 2.1
                  }
                  function updatePosition() {
                      value = (grip.x + grip.width/2) / slider.width
+                     video.seek(value * video.duration)
                  }
              }
          }
