@@ -1,6 +1,6 @@
 import VPlayApps 1.0
 import VPlay 2.0
-import QtQuick 2.0
+import QtQuick 2.5
 import QtMultimedia 5.0
 
 App {
@@ -16,7 +16,7 @@ App {
         entityContainer: page
     }
 
-    Page{
+    Page {
         id: page
 
         Component.onCompleted: {
@@ -36,68 +36,20 @@ App {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    if (video.playbackState === MediaPlayer.PlayingState) {
-                        video.pause()
-                    } else {
-                        video.play()
-                    }
-                }
+                onClicked: playPause()
             }
 
             focus: true
             Keys.onSpacePressed: video.playbackState == MediaPlayer.PlayingState ? video.pause() : video.play()
-            Keys.onLeftPressed: {
-                video.pause()
-                var currPosn = video.position
-                var seekIdx = currIdx
+            Keys.onLeftPressed: skipBack()
+            Keys.onRightPressed: skipForward()
+        }
 
-                // try to jump backwards an index if we keep mashing the back button
-                if (currIdx !== -1 && currPosn < startTime[currIdx]+200) {
-                    seekIdx = getPrevBin(startTime[currIdx]-10, startTime)
-                } else if (currIdx === -1) {
-                    // if there are no subs on the screen
-                    seekIdx = getPrevBin(currPosn, startTime)
-                }
-
-                // if we're at the start or end of the video
-                if(seekIdx === -1) {
-                    video.seek(currPosn - 5000)
-                } else {
-                    // seek isn't exact, so make sure we go back before the requested timerText
-                    // by at least one frame, then start a runDownTimer so we don't get a pause
-                    // from the previous subs overlapping
-                    video.seek(startTime[seekIdx])
-                    currPosn = video.position
-
-                    var i = 10
-                    var targetPosn = startTime[seekIdx]
-                    while(currPosn >= targetPosn) {
-                        video.seek(currPosn - i)
-                        currPosn = video.position
-                        i += 10
-                    }
-
-                    // wait for the amount surplus that we skipped back, plus a margin for error
-                    runDownTimer.interval = targetPosn-currPosn + 500
-                    runDownTimer.start()
-                }
-
-                if (video.playbackState === MediaPlayer.PausedState) {
-                    video.play()
-                }
-            }
-            Keys.onRightPressed: {
-                var idx = getNextBin(video.position, startTime)
-                if (idx === startTime.length) {
-                    video.seek(video.position + 5000)
-                } else {
-                    video.seek(startTime[idx])
-                }
-                if (video.playbackState === MediaPlayer.PausedState){
-                    video.play()
-                }
-            }
+        Nav {
+            id: nav
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 40
         }
     }
 
@@ -192,6 +144,67 @@ App {
     property int prevIdx: -1
     property bool readyToDelete: false
     property bool pause: false
+
+    function playPause() {
+        if (video.playbackState === MediaPlayer.PlayingState) {
+            video.pause()
+        } else {
+            video.play()
+        }
+    }
+
+    function skipBack() {
+        video.pause()
+        var currPosn = video.position
+        var seekIdx = currIdx
+
+        // try to jump backwards an index if we keep mashing the back button
+        if (currIdx !== -1 && currPosn < startTime[currIdx]+200) {
+            seekIdx = getPrevBin(startTime[currIdx]-10, startTime)
+        } else if (currIdx === -1) {
+            // if there are no subs on the screen
+            seekIdx = getPrevBin(currPosn, startTime)
+        }
+
+        // if we're at the start or end of the video
+        if(seekIdx === -1) {
+            video.seek(currPosn - 5000)
+        } else {
+            // seek isn't exact, so make sure we go back before the requested timerText
+            // by at least one frame, then start a runDownTimer so we don't get a pause
+            // from the previous subs overlapping
+            video.seek(startTime[seekIdx])
+            currPosn = video.position
+
+            var i = 10
+            var targetPosn = startTime[seekIdx]
+            while(currPosn >= targetPosn) {
+                video.seek(currPosn - i)
+                currPosn = video.position
+                i += 10
+            }
+
+            // wait for the amount surplus that we skipped back, plus a margin for error
+            runDownTimer.interval = targetPosn-currPosn + 500
+            runDownTimer.start()
+        }
+
+        if (video.playbackState === MediaPlayer.PausedState) {
+            video.play()
+        }
+    }
+
+    function skipForward() {
+        var idx = getNextBin(video.position, startTime)
+        if (idx === startTime.length) {
+            video.seek(video.position + 5000)
+        } else {
+            video.seek(startTime[idx])
+        }
+        if (video.playbackState === MediaPlayer.PausedState){
+            video.play()
+        }
+    }
 
     // get the index where xStart[i] <= xq < xEnd[i]
     function getBin(xq, xStart, xEnd){
