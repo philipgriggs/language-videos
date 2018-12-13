@@ -40,7 +40,14 @@ App {
             }
 
             focus: true
-            Keys.onSpacePressed: video.playbackState == MediaPlayer.PlayingState ? video.pause() : video.play()
+            Keys.onSpacePressed: {
+                if (video.playbackState === MediaPlayer.PlayingState) {
+                    video.pause()
+                } else {
+                    dispCurrSub()
+                    skipBack()
+                }
+            }
             Keys.onLeftPressed: skipBack()
             Keys.onRightPressed: skipForward()
         }
@@ -71,81 +78,7 @@ App {
         interval: 20
         running: video.playbackState === MediaPlayer.PlayingState && !runDownTimer.running
         repeat: true
-        onTriggered: {
-            var currTime = video.position
-
-            // Pause at the end of the current subtitle, but we have to make
-            // sure we've exceeded the current subtitle bin by one frame,
-            // otherwise we won't be able to advance beyond the current pause.
-            // Checks:
-            // 1. we are not in a gap where there are no subs (currIdx !== 1)
-            // 2. there was a gap to fill in the current sub (pause === true)
-            // 3. since we are already in the next bin, we tell the timer not to pause on the next frame (readyToDelete = true)
-            if (currIdx !== -1 && pause && !readyToDelete && currTime >= endTime[currIdx]) {
-                video.pause()
-                prevIdx = -1
-                readyToDelete = true
-            } else {
-                currIdx = getBin(currTime, startTime, endTime)
-
-                // delete and replace the current subs if the video position advanced to the next bin
-                if (currIdx >= 0 && currIdx !== prevIdx) {
-                    entityManager.removeAllEntities()
-
-                    var currStr = str[currIdx].slice()
-                    var currBlank = ans[currIdx].slice()
-                    var currAns = ans[currIdx].slice()
-                    var blanksLength = 0
-                    var rightAns = []
-
-                    // check whether the current subtitle has a missing blank
-                    pause = false
-                    for(var i=0; i<currAns.length; i++) {
-                        if(currAns[i] !== "") {
-                            currBlank[i] = currBlank[i].replace(/.?/g, '_')
-                            pause = true
-                            blanksLength++
-                            rightAns.push(0)
-                        }
-                    }
-
-                    var props = {
-                        x: 0,
-                        y: page.height - 40,
-                        width: page.width,
-                        str: currStr,
-                        ans: currAns,
-                        blank: currBlank,
-                        nAnsNeeded: blanksLength,
-                        rightAns: rightAns,
-                        repeats: currStr.length,
-                        entityId: "SubText",
-                        video: video
-                    }
-
-                    var entityId = entityManager.createEntityFromUrlWithProperties(
-                                Qt.resolvedUrl("Subtext.qml"),
-                                props
-                            );
-                    var entity = entityManager.getEntityById(entityId)
-
-                    // set the width of each text object to wrap to the word length (paintedWidth)
-                    for(i=0; i<currStr.length; i++) {
-                        var txtObj = entity.repeater.itemAt(i).txtObj
-                        txtObj[0].width = txtObj[0].paintedWidth
-                        txtObj[1].width = txtObj[2].paintedWidth
-                    }
-
-                    prevIdx = currIdx
-                    readyToDelete = false
-                } else if (readyToDelete) {
-                    // we have exceeded the endTime (readyToDelete === true) and are in a gap with no subtitles
-                    entityManager.removeAllEntities()
-                    prevIdx = currIdx
-                    readyToDelete = false
-                }
-            }
-        }
+        onTriggered: dispCurrSub()
     }
 
     property var startTime: []
@@ -170,18 +103,8 @@ App {
         var currPosn = video.position
         var seekIdx = currIdx
 
-        // try to jump backwards an index if we keep mashing the back button
-        if (currIdx !== -1 && currPosn < startTime[currIdx]+200) {
-            seekIdx = getPrevBin(startTime[currIdx]-10, startTime)
-        } else if (currIdx === -1) {
-            // if there are no subs on the screen
-            seekIdx = getPrevBin(currPosn, startTime)
-        }
-
-        // if we're at the start or end of the video
-        if(seekIdx === -1) {
-            video.seek(currPosn - 5000)
-        } else {
+        // if we're not in between subs
+        if(seekIdx !== -1) {
             // seek isn't exact, so make sure we go back before the requested timerText
             // by at least one frame, then start a runDownTimer so we don't get a pause
             // from the previous subs overlapping
@@ -216,6 +139,83 @@ App {
         }
         if (video.playbackState === MediaPlayer.PausedState){
             video.play()
+        }
+    }
+
+    // get the current video position and decides which subtitle is needed on the screen
+    function dispCurrSub() {
+        var currTime = video.position
+
+        // Pause at the end of the current subtitle, but we have to make
+        // sure we've exceeded the current subtitle bin by one frame,
+        // otherwise we won't be able to advance beyond the current pause.
+        // Checks:
+        // 1. we are not in a gap where there are no subs (currIdx !== 1)
+        // 2. there was a gap to fill in the current sub (pause === true)
+        // 3. since we are already in the next bin, we tell the timer not to pause on the next frame (readyToDelete = true)
+        if (currIdx !== -1 && pause && !readyToDelete && currTime >= endTime[currIdx]) {
+            video.pause()
+            prevIdx = -1
+            readyToDelete = true
+        } else {
+            currIdx = getBin(currTime, startTime, endTime)
+
+            // delete and replace the current subs if the video position advanced to the next bin
+            if (currIdx >= 0 && currIdx !== prevIdx) {
+                entityManager.removeAllEntities()
+
+                var currStr = str[currIdx].slice()
+                var currBlank = ans[currIdx].slice()
+                var currAns = ans[currIdx].slice()
+                var blanksLength = 0
+                var rightAns = []
+
+                // check whether the current subtitle has a missing blank
+                pause = false
+                for(var i=0; i<currAns.length; i++) {
+                    if(currAns[i] !== "") {
+                        currBlank[i] = currBlank[i].replace(/.?/g, '_')
+                        pause = true
+                        blanksLength++
+                        rightAns.push(0)
+                    }
+                }
+
+                var props = {
+                    x: 0,
+                    y: page.height - 40,
+                    width: page.width,
+                    str: currStr,
+                    ans: currAns,
+                    blank: currBlank,
+                    nAnsNeeded: blanksLength,
+                    rightAns: rightAns,
+                    repeats: currStr.length,
+                    entityId: "SubText",
+                    video: video
+                }
+
+                var entityId = entityManager.createEntityFromUrlWithProperties(
+                            Qt.resolvedUrl("Subtext.qml"),
+                            props
+                            );
+                var entity = entityManager.getEntityById(entityId)
+
+                // set the width of each text object to wrap to the word length (paintedWidth)
+                for(i=0; i<currStr.length; i++) {
+                    var txtObj = entity.repeater.itemAt(i).txtObj
+                    txtObj[0].width = txtObj[0].paintedWidth
+                    txtObj[1].width = txtObj[2].paintedWidth
+                }
+
+                prevIdx = currIdx
+                readyToDelete = false
+            } else if (readyToDelete) {
+                // we have exceeded the endTime (readyToDelete === true) and are in a gap with no subtitles
+                entityManager.removeAllEntities()
+                prevIdx = currIdx
+                readyToDelete = false
+            }
         }
     }
 

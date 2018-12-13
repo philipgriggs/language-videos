@@ -79,7 +79,8 @@ EntityBase {
         repeat: false
         interval: 1000
         onTriggered: {
-            video.play()
+            dispCurrSub()
+            skipBack()
         }
     }
 
