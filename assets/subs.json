@@ -38,72 +38,72 @@
         {
             "start": 29.2,
             "end": 31.529,
-            "str": "Tu feras la fermeture vendredi"
+            "str": "Tu feras la fermeture <vendredi>"
         },
         {
             "start": 31.8,
             "end": 34.0,
-            "str": "je peux pas fermer vendredi, j'ai une\naudition"
+            "str": "je <peux> pas fermer vendredi, j'ai une <audition>"
         },
         {
             "start": 34.0,
             "end": 36.0,
-            "str": "Ça m'est égal, tu n'as qu'à la repousser"
+            "str": "Ça m'est <égal>, tu n'as qu'à la repousser"
         },
         {
             "start": 36.8,
             "end": 40.0,
-            "str": "Il faut qu'on ait une petite conversation demain toutes les deux, d'accord?"
+            "str": "Il faut qu'on ait une petite conversation <demain> toutes les deux, d'accord?"
         },
         {
             "start": 40.0,
             "end": 42.0,
-            "str": "arrange tout habillé s'il te plait"
+            "str": "<arrange> tout habillé s'il te plait"
         },
         {
             "start": 47.5,
             "end": 48.5,
-            "str": "encore toi"
+            "str": "<encore> toi"
         },
         {
             "start": 50.8,
             "end": 52.0,
-            "str": "Qu'est ce que tu fais là?"
+            "str": "<Qu'est ce que> tu fais là?"
         },
         {
             "start": 52.0,
             "end": 55.3,
-            "str": "J'ai quelques personnes à voir. Les patrons des studios et..."
+            "str": "J'ai quelques <personnes> à voir. Les patrons des studios et..."
         },
         {
             "start": 55.3,
             "end": 57.0,
-            "str": "Comment à faire pour rentrer?"
+            "str": "Comment à faire pour <rentrer>?"
         },
         {
             "start": 57.0,
             "end": 60.2,
-            "str": "je me suis faufilé entre les jambes des vigiles au portail"
+            "str": "je me suis faufilé entre les jambes des vigiles au <portail>"
         },
         {
             "start": 60.2,
             "end": 62.5,
-            "str": "j'ai une vingtaine de minutes avant qu'il me trouve"
+            "str": "j'ai une vingtaine de minutes avant qu'il me <trouve>"
         },
         {
             "start": 63.2,
             "end": 64.7,
-            "str": "T'as pas une petite pause de\nprévu?"
+            "str": "T'as pas une <petite> pause de prévu?"
         },
         {
             "start": 64.7,
             "end": 67.0,
-            "str": "je termine dans une minute, donc"
+            "str": "je <termine> dans une minute, donc"
         },
         {
             "start": 68.0,
             "end": 71.0,
-            "str": "Je peux me cacher dans les\ntoilettes? Super"
+            "str": "Je peux me cacher dans les <toilettes>? Super"
         },
         {
             "start": 73.0,
@@ -113,27 +113,27 @@
         {
             "start": 75.2,
             "end": 78.0,
-            "str": "En fait je dois voir ça avec ma chef. Je\nreviens!"
+            "str": "En fait je dois voir ça avec ma chef. Je <reviens>!"
         },
         {
             "start": 81.5,
             "end": 85.59,
-            "str": "c'est la fenêtre à travers laquelle hommes Humphrey Bogart et Ingrid Bergman regardait dans Casablanca"
+            "str": "c'est la <fenêtre> à travers laquelle hommes Humphrey Bogart et Ingrid Bergman regardait dans Casablanca"
         },
         {
             "start": 85.59,
             "end": 89.0,
-            "str": "ouah, et tu travailles dans une\ncafétaria juste en face"
+            "str": "ouah, et tu travailles dans une cafétaria juste <en face>"
         },
         {
             "start": 89.0,
             "end": 94.1,
-            "str": "C'est formidable. Comment il s'appelle ton, ton Bogart à toi?"
+            "str": "C'est <formidable>. Comment il s'appelle ton, ton Bogart à toi?"
         },
         {
             "start": 94.1,
             "end": 96.6,
-            "str": "C'est quoi déjà, Greg, c'est ça?"
+            "str": "C'est quoi <déjà>, Greg, c'est ça?"
         },
         {
             "start": 96.6,
@@ -143,77 +143,77 @@
         {
             "start": 99.6,
             "end": 101.5,
-            "str": "ça fait combien de temps que vous..."
+            "str": "ça fait <combien> de temps que vous..."
         },
         {
             "start": 101.5,
             "end": 105.0,
-            "str": "vous voit régulièrement depuis un mois\neh bien"
+            "str": "vous voit régulièrement <depuis> un mois eh bien"
         },
         {
             "start": 105.0,
             "end": 108.6,
-            "str": "il est le gentil pref... j'adore le cadre et l'atmosphère"
+            "str": "il est le gentil pref... <j'adore> le cadre et l'atmosphère"
         },
         {
             "start": 108.6,
             "end": 109.6,
-            "str": "je comprends ça"
+            "str": "je <comprends> ça"
         },
         {
             "start": 109.6,
             "end": 113.1,
-            "str": "moi, je préfère 8 km pour boire un café juste pour être à côté d'un club de jazz"
+            "str": "moi, je <préfère> 8 km pour boire un café juste pour être à côté d'un club de jazz"
         },
         {
             "start": 113.12,
             "end": 113.8,
-            "str": "c'est vrai?"
+            "str": "c'est <vrai>?"
         },
         {
             "start": 113.8,
             "end": 116.0,
-            "str": "Oui, le Van Beek. Tu connais?"
+            "str": "Oui, le Van Beek. Tu <connais>?"
         },
         {
             "start": 116.0,
             "end": 119.3,
-            "str": "Tous les bons groupes jouaient la bar. Comte Basie, Chick Web"
+            "str": "<Tous> les bons groupes jouaient la bar. Comte Basie, Chick Web"
         },
         {
             "start": 120.0,
             "end": 122.8,
-            "str": "c'est devenu un bar à samba tapas maintenant"
+            "str": "c'est devenu un bar à samba tapas <maintenant>"
         },
         {
             "start": 124.4,
             "end": 125.7,
-            "str": "C'est quoi un bar à samba tapas?"
+            "str": "C'est <quoi> un bar à samba tapas?"
         },
         {
             "start": 125.7,
             "end": 128.2,
-            "str": "une sorte de club de samba où on sert des tapas"
+            "str": "une <sorte> de club de samba <où> on sert des tapas"
         },
         {
             "start": 128.2,
             "end": 132.05,
-            "str": "encore un coup de pied à histoire du jazz ce criminel"
+            "str": "encore un coup de pied à histoire du jazz ce <criminel>"
         },
         {
             "start": 132.05,
             "end": 136.2,
-            "str": "en L.A. ici on je c'est pas ici tu vois en vénère tout et on respecte rien"
+            "str": "en L.A. ici on je c'est pas ici tu vois en vénère tout et on respecte <rien>"
         },
         {
             "start": 136.6,
             "end": 139.0,
-            "str": "silence on tourne, du silence s'il vous plaît"
+            "str": "<silence> on tourne, du <silence> s'il vous plaît"
         },
         {
             "start": 140.2,
             "end": 145.5,
-            "str": "Vous tournez? Je connais, dans ma rue aussi est souvent des tonnages, c'est pas un problème"
+            "str": "Vous tournez? Je <connais>, dans ma rue aussi est souvent des tonnages, c'est pas un problème"
         },
         {
             "start": 145.5,
@@ -223,42 +223,42 @@
         {
             "start": 147.9,
             "end": 149.2,
-            "str": "Je l'adore!"
+            "str": "<Je l'adore!>"
         },
         {
             "start": 150.0,
             "end": 152.0,
-            "str": "Mia, comment t'as intérêt l'attend?"
+            "str": "Mia, <comment> t'as intérêt l'attend?"
         },
         {
             "start": 153.36,
             "end": 154.36,
-            "str": "Attirer dans quoi?"
+            "str": "Attirer <dans quoi>?"
         },
         {
             "start": 154.78,
             "end": 157.12,
-            "str": "dans le cinéma a comédie"
+            "str": "dans le cinéma, la <comédie>"
         },
         {
             "start": 158.9,
             "end": 161.24,
-            "str": "ma tante était actrice\nd'accord"
+            "str": "ma <tante> était actrice d'accord"
         },
         {
             "start": 161.78,
             "end": 166.32,
-            "str": "elle était dans une troupe de théâtre itinérante\nj'ai grandi à Boulder City dans Nevada"
+            "str": "elle <était dans> une troupe de théâtre itinérante j'ai grandi à Boulder City dans Nevada"
         },
         {
             "start": 166.32,
             "end": 170.9,
-            "str": "en face de chez nous il y avait une petite bibliothèque avec tout un rayon de cassettes vidéo"
+            "str": "en face de <chez nous> il y avait une petite bibliothèque avec tout un rayon de cassettes vidéo"
         },
         {
             "start": 170.94,
             "end": 176.0,
-            "str": "et ma tante elle n y emmenait au passé des journées entières à regarder tous ces vieux films en commun"
+            "str": "<et ma tante> elle n'y emmenait au passé des journées entières à regarder tous ces vieux films en commun"
         },
         {
             "start": 176.0,
@@ -268,62 +268,62 @@
         {
             "start": 182.54,
             "end": 183.32,
-            "str": "on peut parler maintenant"
+            "str": "on peut <parler> maintenant"
         },
         {
             "start": 183.32,
             "end": 184.28,
-            "str": "elle a l'air incroyable"
+            "str": "elle a l'air <incroyable>"
         },
         {
             "start": 184.28,
             "end": 188.08,
-            "str": "elle était vraiment et je monte des spectacles avec elle dans ma chambre"
+            "str": "elle était <vraiment> et je monte des spectacles avec elle dans ma <chambre>"
         },
         {
             "start": 188.08,
             "end": 193.36,
-            "str": "laraque toutes les deux à rejouer des\nscènes de tous ses films"
+            "str": "laraque toutes les deux à rejouer des scènes de tous ses <films>"
         },
         {
             "start": 193.36,
             "end": 196.24,
-            "str": "j'écrivais aussi mes propres pièces, oias"
+            "str": "<j'écrivais> aussi mes propres pièces, oias"
         },
         {
             "start": 217.34,
             "end": 219.12,
-            "str": "j'adore ça"
+            "str": "<j'adore ça>"
         },
         {
             "start": 223.18,
             "end": 226.84,
-            "str": "et puis après j'ai quitté la fac au bout\nde deux ans pour venir ici et"
+            "str": "et puis après j'ai quitté la fac au bout de <deux ans> pour venir ici et"
         },
         {
             "start": 226.84,
             "end": 232.62,
-            "str": "ma dernière audition c'était une série pour adour entre esprits criminels et Newport beach, donc oui"
+            "str": "ma <dernière> audition c'était une série pour adour entre esprits <criminels> et Newport beach, donc oui"
         },
         {
             "start": 233.4,
             "end": 235.4,
-            "str": "j'aurais mieux fait d'être avocate"
+            "str": "j'aurais <mieux> fait d'être avocate"
         },
         {
             "start": 235.52,
             "end": 237.38,
-            "str": "lorsque le monde manque d'avocats"
+            "str": "parce que le <monde> manque d'avocats"
         },
         {
             "start": 238.44,
             "end": 240.3,
-            "str": "il ne manque pas de nouvelles actrices"
+            "str": "il ne <manque> pas de nouvelles actrices"
         },
         {
             "start": 240.3,
             "end": 241.4,
-            "str": "tu n'est pas q'une simple actrice"
+            "str": "tu n'est pas q'une <simple> actrice"
         },
         {
             "start": 241.4,
@@ -333,82 +333,82 @@
         {
             "start": 243.0,
             "end": 246.26,
-            "str": "tu l'as dis toi même, tu es une enfant prodige de la dramaturgie"
+            "str": "tu l'as dis toi <même>, tu es une <enfant> prodige de la dramaturgie"
         },
         {
             "start": 246.26,
             "end": 247.74,
-            "str": "je jamais dit ça"
+            "str": "je <jamais> dit ça"
         },
         {
             "start": 247.74,
             "end": 250.96,
-            "str": "parce que tu est trop modeste pour le dire mais c'est ce que tu es"
+            "str": "parce que tu est trop <modeste> pour le dire <mais> c'est ce que tu es"
         },
         {
             "start": 251.5,
             "end": 256.8,
-            "str": "tu pourrais écrire tes propres rôles du sel écriteau un rôle sur mesure et aura plus à passer ces castings"
+            "str": "tu pourrais <écrire> tes propres rôles du sel écriteau un rôle sur mesure et aura plus à passer ces castings"
         },
         {
             "start": 256.8,
             "end": 258.66,
-            "str": "de merde"
+            "str": "de <merde>"
         },
         {
             "start": 258.66,
             "end": 262.52,
-            "str": "regarde Louis Armstrong, il aurait pu jouer dans une fanfare on lui avait proposé"
+            "str": "<regarde> Louis Armstrong, il aurait pu <jouer> dans une fanfare on lui avait proposé"
         },
         {
             "start": 262.52,
             "end": 264.1,
-            "str": "Mais il a dit, non. Qu'est ce qu'il a fait?"
+            "str": "Mais il a <dit>, non. Qu'est ce qu'il a fait?"
         },
         {
             "start": 264.5,
             "end": 265.28,
-            "str": "Qu'est ce qu'il a fait?"
+            "str": "<Qu'est ce> qu'il a fait?"
         },
         {
             "start": 265.28,
             "end": 267.22,
-            "str": "Il est entré dans l'histoire, pas\nvrai?"
+            "str": "Il est entré dans <l'histoire>, pas vrai?"
         },
         {
             "start": 267.22,
             "end": 271.02,
-            "str": "bon, bah je vais plus auditionné comme sage entreraient dans l'histoire"
+            "str": "bon, bah je <vais plus> auditionné comme sage entreraient dans l'histoire"
         },
         {
             "start": 271.5,
             "end": 274.4,
-            "str": "parfait, mon travail s'arrête là"
+            "str": "<parfait>, mon travail s'arrête là"
         },
         {
             "start": 275.14,
             "end": 280.72,
-            "str": "je crois que le moment est venu de faire un aveu\nil faut vraiment que sa sortie je déteste le jazz"
+            "str": "je <crois> que le moment est venu de faire un aveu il faut vraiment que sa sortie je <déteste> le jazz"
         },
         {
             "start": 282.72,
             "end": 283.6,
-            "str": "Ça va aller?"
+            "str": "Ça va <aller>?"
         },
         {
             "start": 283.6,
             "end": 286.14,
-            "str": "Qu'est ce que tu veux dire tu détestes le jazz?"
+            "str": "Qu'est ce que tu <veux dire> tu détestes le jazz?"
         },
         {
             "start": 286.14,
             "end": 288.04,
-            "str": "je veux dire que quand j'en écoute j'aime pas"
+            "str": "je veux dire que quand j'en <écoute> j'aime pas"
         },
         {
             "start": 288.04,
             "end": 290.82,
-            "str": "je trouve que tu généralise un peu trop \n quand tu dis j'aime pas le jazz"
+            "str": "je trouve que tu généralise un peu <trop> quand tu dis j'aime pas le jazz"
         },
         {
             "start": 291.28,
@@ -418,7 +418,7 @@
         {
             "start": 293.94,
             "end": 295.58,
-            "str": "rien spécial"
+            "str": "<rien> spécial"
         }
     ]
 }
