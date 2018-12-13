@@ -7,45 +7,48 @@ Item {
     id: nav
 
     Row {
+        id: row
         anchors.centerIn: parent
+        spacing: 0
         property real minWidth: dp(30)
+        property color bgColorPressed: "#999999"
+        property color fgColor: "#cccccc"
 
-        AppButton {
-            minimumWidth: minimumWidth
-            minimumHeight: minimumWidth
-            width: dp(40)
-            height: dp(40)
+        IconButton {
+            width: parent.minWidth
+            height: parent.minWidth
             icon: IconType.angledoubleleft
-            backgroundColor: "#555555"
-            backgroundColorPressed: "#333333"
+            color: row.fgColor
+            selectedColor: row.bgColorPressed
             onClicked: skipBack()
         }
 
-        AppButton {
-            minimumWidth: minimumWidth
-            minimumHeight: minimumWidth
-            width: dp(40)
-            height: dp(40)
+        IconButton {
+            width: parent.minWidth
+            height: parent.minWidth
             icon: video.playbackState === MediaPlayer.PlayingState ? IconType.pause : IconType.play
-            backgroundColor: "#555555"
-            backgroundColorPressed: "#333333"
+            color: row.fgColor
+            selectedColor: row.bgColorPressed
             onClicked: playPause()
         }
 
-        AppButton {
-            minimumWidth: minimumWidth
-            minimumHeight: minimumWidth
-            width: dp(40)
-            height: dp(40)
+        IconButton {
+            width: parent.minWidth
+            height: parent.minWidth
             icon: IconType.angledoubleright
-            backgroundColor: "#555555"
-            backgroundColorPressed: "#333333"
-            onClicked: skipBack()
+            color: row.fgColor
+            selectedColor: row.bgColorPressed
+            onClicked: skipForward()
         }
+    }
 
-        Slider{
-            width: dp(400)
-        }
+    Slider{
+        id: slider
+        width: 0.8 * screenWidth
+        anchors.top: row.bottom
+        anchors.topMargin: dp(10)
+        anchors.horizontalCenter: parent.horizontalCenter
+        value: video.position / video.duration
     }
 
 }
