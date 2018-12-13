@@ -57,8 +57,12 @@ App {
         id: runDownTimer
         running: false
         repeat: false
+        interval: 50
         onTriggered: {
-            // fire displayTimer after run down has elapsed via property bindings
+            if(currIdx !== -1 && video.position > startTime[currIdx]) {
+                // fire displayTimer after run down has elapsed via property bindings
+                repeat = false
+            }
         }
     }
 
@@ -193,7 +197,8 @@ App {
             }
 
             // wait for the amount surplus that we skipped back, plus a margin for error
-            runDownTimer.interval = targetPosn-currPosn + 500
+            currIdx = seekIdx
+            runDownTimer.repeat = true
             runDownTimer.start()
         }
 
