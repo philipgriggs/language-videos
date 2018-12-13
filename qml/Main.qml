@@ -48,27 +48,42 @@ App {
             focus: true
             Keys.onSpacePressed: video.playbackState == MediaPlayer.PlayingState ? video.pause() : video.play()
             Keys.onLeftPressed: {
-                if (currIdx !== -1) {
-                    if (video.position < startTime[currIdx]+200) {
-                        var idx = getPrevBin(startTime[currIdx]-10, startTime)
-                        if (idx === -1){
-                            video.seek(video.position - 5000)
-                        } else {
-                            video.seek(startTime[idx])
-                        }
-                    } else {
-                        console.log("seeking to " + startTime[currIdx] + " " + currIdx)
-                        video.seek(startTime[currIdx])
-                    }
-                } else {
-                    idx = getPrevBin(video.position, startTime)
-                    if (idx === -1){
-                        video.seek(video.position - 5000)
-                    } else {
-                        video.seek(startTime[idx])
-                    }
+                video.pause()
+                var currPosn = video.position
+                var seekIdx = currIdx
+
+                // try to jump backwards an index if we keep mashing the back button
+                if (currIdx !== -1 && currPosn < startTime[currIdx]+200) {
+                    seekIdx = getPrevBin(startTime[currIdx]-10, startTime)
+                } else if (currIdx === -1) {
+                    // if there are no subs on the screen
+                    seekIdx = getPrevBin(currPosn, startTime)
                 }
-                if (video.playbackState === MediaPlayer.PausedState){
+
+                // if we're at the start or end of the video
+                if(seekIdx === -1) {
+                    video.seek(currPosn - 5000)
+                } else {
+                    // seek isn't exact, so make sure we go back before the requested timerText
+                    // by at least one frame, then start a runDownTimer so we don't get a pause
+                    // from the previous subs overlapping
+                    video.seek(startTime[seekIdx])
+                    currPosn = video.position
+
+                    var i = 10
+                    var targetPosn = startTime[seekIdx]
+                    while(currPosn >= targetPosn) {
+                        video.seek(currPosn - i)
+                        currPosn = video.position
+                        i += 10
+                    }
+
+                    // wait for the amount surplus that we skipped back, plus a margin for error
+                    runDownTimer.interval = targetPosn-currPosn + 500
+                    runDownTimer.start()
+                }
+
+                if (video.playbackState === MediaPlayer.PausedState) {
                     video.play()
                 }
             }
@@ -86,15 +101,30 @@ App {
         }
     }
 
-    Timer{
+    Timer {
+        id: runDownTimer
+        running: false
+        repeat: false
+        onTriggered: {
+            // fire displayTimer after run down has elapsed via property bindings
+        }
+    }
+
+    Timer {
         id: displayTimer
         interval: 20
-        running: video.playbackState === MediaPlayer.PlayingState
+        running: video.playbackState === MediaPlayer.PlayingState && !runDownTimer.running
         repeat: true
         onTriggered: {
-
             var currTime = video.position
 
+            // Pause at the end of the current subtitle, but we have to make
+            // sure we've exceeded the current subtitle bin by one frame,
+            // otherwise we won't be able to advance beyond the current pause.
+            // Checks:
+            // 1. we are not in a gap where there are no subs (currIdx !== 1)
+            // 2. there was a gap to fill in the current sub (pause === true)
+            // 3. since we are already in the next bin, we tell the timer not to pause on the next frame (readyToDelete = true)
             if (currIdx !== -1 && pause && !readyToDelete && currTime >= endTime[currIdx]) {
                 video.pause()
                 prevIdx = -1
@@ -102,12 +132,14 @@ App {
             } else {
                 currIdx = getBin(currTime, startTime, endTime)
 
+                // delete and replace the current subs if the video position advanced to the next bin
                 if (currIdx >= 0 && currIdx !== prevIdx) {
                     entityManager.removeAllEntities()
 
                     var currStr = str[currIdx]
                     var currAns = ans[currIdx]
 
+                    // check whether the current subtitle has a missing blank
                     pause = false
                     for(var i=0; i<currAns.length; i++) {
                         if(currAns[i] !== "") {
@@ -133,6 +165,7 @@ App {
                             );
                     var entity = entityManager.getEntityById(entityId)
 
+                    // set the width of each text object to wrap to the word length (paintedWidth)
                     for(i=0; i<currStr.length; i++) {
                         var txtObj = entity.repeater.itemAt(i).txtObj
                         txtObj[0].width = txtObj[0].paintedWidth
@@ -142,6 +175,7 @@ App {
                     prevIdx = currIdx
                     readyToDelete = false
                 } else if (readyToDelete) {
+                    // we have exceeded the endTime (readyToDelete === true) and are in a gap with no subtitles
                     entityManager.removeAllEntities()
                     prevIdx = currIdx
                     readyToDelete = false
@@ -159,6 +193,7 @@ App {
     property bool readyToDelete: false
     property bool pause: false
 
+    // get the index where xStart[i] <= xq < xEnd[i]
     function getBin(xq, xStart, xEnd){
         var i = 0
         if (xq<xStart[0]) return -1
@@ -170,6 +205,7 @@ App {
         return -1
     }
 
+    // get the index of the bin one before the current time
     function getPrevBin(xq, xStart){
         var i = 0
         for (i=0; i<xStart.length; i++){
@@ -180,6 +216,7 @@ App {
         return i-1
     }
 
+    // get the index of the bin one after the current time
     function getNextBin(xq, xStart){
         var i = 0
         for (i=0; i<xStart.length; i++){
@@ -192,6 +229,7 @@ App {
         return i
     }
 
+    // extract the json subtitles into arrays of startTime [ms], endTime [ms], subtitles and blanks
     function parseJson(file) {
         var document = fileUtils.readFile(Qt.resolvedUrl(file))
         var jsonObj = JSON.parse(document)
@@ -206,6 +244,8 @@ App {
         }
     }
 
+    // Split the string into subtitles and blanks - words in <brackets> are replaced by blanks.
+    // Because we are using a repeater, the return array of subtitles (str) and blanks (ans) must be the same length.
     function strSplit(str) {
         var strRe = /^[^<].+?<|>.*?<|>.+$/g
         var ansRe = /<.*?>/g
@@ -213,12 +253,14 @@ App {
         var strIdx = []
         var ansIdx = []
 
+        // get the index of the str matches (non-blanks)
         var match = strRe.exec(str)
         while (match != null) {
             strIdx.push(match.index)
             match = strRe.exec(str)
         }
 
+        // get the index of the blanks
         match = ansRe.exec(str)
         while (match != null) {
             ansIdx.push(match.index)
@@ -226,12 +268,16 @@ App {
         }
 
         if (strIdx.length > 0 || ansIdx.length>0) {
+            // get the subtitle values
             var strMatch = str.match(/^[^<].+?<|>.*?<|>.+$/g)
             if(strMatch !== null) {
+                // trim the leading and trailing '<>' (since negative look ahead/behind is not supported)
                 for (var i=0; i<strMatch.length; i++){
                     strMatch[i] = strMatch[i].replace(/<|>/g, '');
                 }
 
+                // we require a pattern: [str, ans, str, ans, ...]
+                // so add an empty str if the first item is a blank
                 if(strIdx[0] > ansIdx[0]) {
                     strMatch.unshift("")
                 }
@@ -239,12 +285,15 @@ App {
                 strMatch = [""]
             }
 
+            // get the blanks values
             var ansMatch = str.match(/<.*?>/g)
             if (ansMatch !== null) {
+                // trim the leading and trailing '<>' (since negative look ahead/behind is not supported)
                 for (i=0; i<ansMatch.length; i++){
                     ansMatch[i] = ansMatch[i].replace(/<|>/g, '');
                 }
 
+                // so add an empty str if the last item is a subtitle
                 if(strIdx[strIdx.length-1] > ansIdx[ansIdx.length-1]) {
                     ansMatch.push("")
                 }
