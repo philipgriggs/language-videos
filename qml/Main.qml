@@ -88,15 +88,20 @@ App {
                 if (currIdx >= 0 && currIdx !== prevIdx) {
                     entityManager.removeAllEntities()
 
-                    var currStr = str[currIdx]
-                    var currAns = ans[currIdx]
+                    var currStr = str[currIdx].slice()
+                    var currBlank = ans[currIdx].slice()
+                    var currAns = ans[currIdx].slice()
+                    var blanksLength = 0
+                    var rightAns = []
 
                     // check whether the current subtitle has a missing blank
                     pause = false
                     for(var i=0; i<currAns.length; i++) {
                         if(currAns[i] !== "") {
-                            currAns[i] = currAns[i].replace(/.?/g, '_')
+                            currBlank[i] = currBlank[i].replace(/.?/g, '_')
                             pause = true
+                            blanksLength++
+                            rightAns.push(0)
                         }
                     }
 
@@ -106,6 +111,9 @@ App {
                         width: page.width,
                         str: currStr,
                         ans: currAns,
+                        blank: currBlank,
+                        nAnsNeeded: blanksLength,
+                        rightAns: rightAns,
                         repeats: currStr.length,
                         entityId: "SubText",
                         video: video
