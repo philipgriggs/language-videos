@@ -108,7 +108,8 @@ App {
                         ans: currAns,
                         repeats: currStr.length,
                         entityId: "SubText",
-                        video: video
+                        video: video,
+                        ccButton: nav.ccButton
                     }
 
                     var entityId = entityManager.createEntityFromUrlWithProperties(
