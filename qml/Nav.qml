@@ -5,6 +5,7 @@ import QtMultimedia 5.0
 Item {
 
     id: nav
+    property alias ccButton: ccButton
 
     Row {
         id: row
@@ -15,8 +16,8 @@ Item {
         property color fgColor: "#cccccc"
 
         IconButton {
-            width: parent.minWidth
-            height: parent.minWidth
+            width: row.minWidth
+            height: row.minWidth
             icon: IconType.angledoubleleft
             color: row.fgColor
             selectedColor: row.bgColorPressed
@@ -24,8 +25,8 @@ Item {
         }
 
         IconButton {
-            width: parent.minWidth
-            height: parent.minWidth
+            width: row.minWidth
+            height: row.minWidth
             icon: video.playbackState === MediaPlayer.PlayingState ? IconType.pause : IconType.play
             color: row.fgColor
             selectedColor: row.bgColorPressed
@@ -33,12 +34,20 @@ Item {
         }
 
         IconButton {
-            width: parent.minWidth
-            height: parent.minWidth
+            width: row.minWidth
+            height: row.minWidth
             icon: IconType.angledoubleright
             color: row.fgColor
             selectedColor: row.bgColorPressed
             onClicked: skipForward()
+        }
+
+        CcButton {
+            id: ccButton
+            width: row.minWidth
+            height: row.minWidth
+            bgColorPressed: bgColorPressed
+            fgColor: fgColor
         }
     }
 
