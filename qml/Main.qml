@@ -1,6 +1,6 @@
 import VPlayApps 1.0
 import VPlay 2.0
-import QtQuick 2.0
+import QtQuick 2.5
 import QtMultimedia 5.0
 
 App {
@@ -16,7 +16,7 @@ App {
         entityContainer: page
     }
 
-    Page{
+    Page {
         id: page
 
         Component.onCompleted: {
@@ -36,57 +36,24 @@ App {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: {
-                    if (video.playbackState === MediaPlayer.PlayingState) {
-                        video.pause()
-                    } else {
-                        video.play()
-                    }
-                }
+                onClicked: playPause()
             }
 
             focus: true
             Keys.onSpacePressed: video.playbackState == MediaPlayer.PlayingState ? video.pause() : video.play()
-            Keys.onLeftPressed: {
-                if (currIdx !== -1) {
-                    if (video.position < startTime[currIdx]+200) {
-                        var idx = getPrevBin(startTime[currIdx]-10, startTime)
-                        if (idx === -1){
-                            video.seek(video.position - 5000)
-                        } else {
-                            video.seek(startTime[idx])
-                        }
-                    } else {
-                        console.log("seeking to " + startTime[currIdx] + " " + currIdx)
-                        video.seek(startTime[currIdx])
-                    }
-                } else {
-                    idx = getPrevBin(video.position, startTime)
-                    if (idx === -1){
-                        video.seek(video.position - 5000)
-                    } else {
-                        video.seek(startTime[idx])
-                    }
-                }
-                if (video.playbackState === MediaPlayer.PausedState){
-                    video.play()
-                }
-            }
-            Keys.onRightPressed: {
-                var idx = getNextBin(video.position, startTime)
-                if (idx === startTime.length) {
-                    video.seek(video.position + 5000)
-                } else {
-                    video.seek(startTime[idx])
-                }
-                if (video.playbackState === MediaPlayer.PausedState){
-                    video.play()
-                }
-            }
+            Keys.onLeftPressed: skipBack()
+            Keys.onRightPressed: skipForward()
+        }
+
+        Nav {
+            id: nav
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.top
+            anchors.topMargin: 40
         }
     }
 
-    Timer{
+    Timer {
         id: displayTimer
         interval: 20
         running: video.playbackState === MediaPlayer.PlayingState
@@ -159,7 +126,53 @@ App {
     property bool readyToDelete: false
     property bool pause: false
 
-    function getBin(xq, xStart, xEnd){
+    function playPause() {
+        if (video.playbackState === MediaPlayer.PlayingState) {
+            video.pause()
+        } else {
+            video.play()
+        }
+    }
+
+    function skipBack() {
+        if (currIdx !== -1) {
+            if (video.position < startTime[currIdx]+200) {
+                var idx = getPrevBin(startTime[currIdx]-10, startTime)
+                if (idx === -1){
+                    video.seek(video.position - 5000)
+                } else {
+                    video.seek(startTime[idx])
+                }
+            } else {
+                console.log("seeking to " + startTime[currIdx] + " " + currIdx)
+                video.seek(startTime[currIdx])
+            }
+        } else {
+            idx = getPrevBin(video.position, startTime)
+            if (idx === -1){
+                video.seek(video.position - 5000)
+            } else {
+                video.seek(startTime[idx])
+            }
+        }
+        if (video.playbackState === MediaPlayer.PausedState){
+            video.play()
+        }
+    }
+
+    function skipForward() {
+        var idx = getNextBin(video.position, startTime)
+        if (idx === startTime.length) {
+            video.seek(video.position + 5000)
+        } else {
+            video.seek(startTime[idx])
+        }
+        if (video.playbackState === MediaPlayer.PausedState){
+            video.play()
+        }
+    }
+
+    function getBin(xq, xStart, xEnd) {
         var i = 0
         if (xq<xStart[0]) return -1
         for (i=0; i<xStart.length; i++){
