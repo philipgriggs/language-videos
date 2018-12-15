@@ -36,7 +36,22 @@ App {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: playPause()
+                hoverEnabled: true
+
+                onClicked: {
+                    hideNavTimer.start()
+                    playPause()
+                }
+
+                onMouseYChanged: {
+                    nav.opacity = 1.0;
+                    hideNavTimer.restart()
+                }
+
+                onEntered: {
+                    nav.opacity = 1.0;
+                    hideNavTimer.restart()
+                }
             }
 
             focus: true
@@ -57,7 +72,16 @@ App {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 40
+            Behavior on opacity {NumberAnimation {duration: 500} }
         }
+    }
+
+    Timer {
+        id: hideNavTimer
+        running: false
+        repeat: false
+        interval: 5000
+        onTriggered: nav.opacity=0
     }
 
     Timer {
