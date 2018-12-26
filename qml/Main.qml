@@ -39,8 +39,9 @@ App {
                 hoverEnabled: true
 
                 onClicked: {
-                    hideNavTimer.start()
-                    playPause()
+                    // hideNavTimer.start()
+                    // playPause()
+                    video.focus = true
                 }
 
                 onMouseYChanged: {
