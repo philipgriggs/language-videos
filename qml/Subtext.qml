@@ -55,11 +55,16 @@ EntityBase {
                             if(nRightAns == nAnsNeeded) {
                                 focus = false
                                 video.focus = true
-                                successRundown.start()
+//                                successRundown.start()
                             }
                         } else {
                             textEdit.text = ""
                             incorrect.play()
+                        }
+                    }
+                    Keys.onTabPressed: {
+                        if (index + 1 < ans.length) {
+                            repeater.itemAt(index+1).txtObj[1].focus = true
                         }
                     }
                 }
