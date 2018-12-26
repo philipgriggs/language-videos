@@ -53,4 +53,5 @@ macx {
 DISTFILES += \
     qml/Subtext.qml \
     qml/Nav.qml \
-    qml/Slider.qml
+    qml/Slider.qml \
+    qml/CcButton.qml

@@ -12,11 +12,13 @@ EntityBase {
     property var video: null
     property int repeats: 1
     property alias repeater: repeater
+    property var ccButton: null
     property var rightAns: []
     property int nAnsNeeded: 0
 
     Row{
         anchors.centerIn: parent
+        visible: ccButton.isOn
         Repeater {
             id: repeater
             model: repeats
