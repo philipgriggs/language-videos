@@ -45,7 +45,7 @@ EntityBase {
                         if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
                             success = true
                             rightAns[index] = 1
-                            woop.play()
+                            correct.play()
 
                             var nRightAns = 0
                             for(var i = 0; i < rightAns.length; i++) {
@@ -59,6 +59,7 @@ EntityBase {
                             }
                         } else {
                             textEdit.text = ""
+                            incorrect.play()
                         }
                     }
                 }
@@ -87,8 +88,14 @@ EntityBase {
     }
 
     SoundEffectVPlay {
-      id: woop
-      source: "../assets/Sonic Ring Sound Effect.wav"
+      id: correct
+      source: "../assets/correct.wav"
+      volume: 0.2
+    }
+
+    SoundEffectVPlay {
+      id: incorrect
+      source: "../assets/incorrect.wav"
       volume: 0.2
     }
 }
