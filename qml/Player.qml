@@ -3,13 +3,15 @@ import VPlay 2.0
 import QtQuick 2.5
 import QtMultimedia 5.0
 
-App {
+Item {
     // You get free licenseKeys from https://v-play.net/licenseKey
     // With a licenseKey you can:
     //  * Publish your games & apps for the app stores
     //  * Remove the V-Play Splash Screen or set a custom one (available with the Pro Licenses)
     //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
     //licenseKey: "<generate one from https://v-play.net/licenseKey>"
+
+    property string fileName: "../assets/La La Land 1.m4v"
 
     EntityManager {
         id: entityManager
@@ -31,7 +33,7 @@ App {
         Video {
             id: video
             anchors.fill: parent
-            source: "../assets/La La Land 1.m4v"
+            source: fileName
             autoPlay: false
 
             MouseArea {
