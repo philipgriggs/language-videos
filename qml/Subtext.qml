@@ -45,7 +45,7 @@ EntityBase {
                         if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
                             success = true
                             rightAns[index] = 1
-                            woop.play()
+                            correct.play()
 
                             var nRightAns = 0
                             for(var i = 0; i < rightAns.length; i++) {
@@ -55,10 +55,16 @@ EntityBase {
                             if(nRightAns == nAnsNeeded) {
                                 focus = false
                                 video.focus = true
-                                successRundown.start()
+//                                successRundown.start()
                             }
                         } else {
                             textEdit.text = ""
+                            incorrect.play()
+                        }
+                    }
+                    Keys.onTabPressed: {
+                        if (index + 1 < ans.length) {
+                            repeater.itemAt(index+1).txtObj[1].focus = true
                         }
                     }
                 }
@@ -87,8 +93,14 @@ EntityBase {
     }
 
     SoundEffectVPlay {
-      id: woop
-      source: "../assets/Sonic Ring Sound Effect.wav"
+      id: correct
+      source: "../assets/correct.wav"
+      volume: 0.2
+    }
+
+    SoundEffectVPlay {
+      id: incorrect
+      source: "../assets/incorrect.wav"
       volume: 0.2
     }
 }
