@@ -6,17 +6,29 @@ Scene {
     id: menuScene
 
     signal sceneChange(string scene)
+    signal loadVideo(string movFileName, string subsFileName)
+
+    property var dispName: ['La La Land', 'Belle et La Bete']
+    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4']
+    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json']
 
     Page {
         id: mainPage
 
-        Column {
+        Row {
             anchors.centerIn: parent
 
-            // text to show the current count and button to push the second page
-            AppButton {
-                text: "Start"
-                onClicked: sceneChange("player")
+            Repeater {
+                id: repeater
+                model: movFiles
+
+                // text to show the current count and button to push the second page
+                AppButton {
+                    text: dispName[index]
+                    onClicked: {
+                        loadVideo(movFiles[index], subsFiles[index])
+                    }
+                }
             }
         }
     }
