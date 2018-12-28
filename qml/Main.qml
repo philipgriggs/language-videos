@@ -5,20 +5,25 @@ import QtQuick 2.0
 GameWindow {
     id: app
 
-    // main page
     MenuScene {
         id: menuScene
         anchors.fill: parent
         onSceneChange: {
+            app.state = scene
+        }
+        onLoadVideo: {
             app.state = "player"
+            playerScene.loadVideo(movFileName, subsFileName)
         }
     }
 
-    // inline-definition of a component, which is later pushed on the stack
     PlayerScene {
         id: playerScene
         width: parent.width
         height: parent.height
+        onBack: {
+            app.state = "menu"
+        }
     }
 
     // menuScene is our first scene, so set the state to menu initially
