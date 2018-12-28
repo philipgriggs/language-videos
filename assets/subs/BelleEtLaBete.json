@@ -1,0 +1,104 @@
+{
+    "data": [
+        {
+            "start": 4.22,
+            "end": 7.98,
+            "str": "Bonjour!"
+        },
+        {
+            "start": 8.42,
+            "end": 12.16,
+            "str": "Et on commence par retrouver sans <surprise>"
+        },
+        {
+            "start": 12.16,
+            "end": 15.54,
+            "str": "le bon vieux pain du <boulanger>"
+        },
+        {
+            "start": 15.54,
+            "end": 17.46,
+            "str": "tous les <matins> sont en somme"
+        },
+        {
+            "start": 17.46,
+            "end": 19.44,
+            "str": "<comme> le matin où nous sommes"
+        },
+        {
+            "start": 19.44,
+            "end": 21.06,
+            "str": "<arrivés> dans ce village"
+        },
+        {
+            "start": 21.06,
+            "end": 22.48,
+            "str": "Bonjour, Belle!"
+        },
+        {
+            "start": 22.48,
+            "end": 24.36,
+            "str": "Bonjour, <Monsieur> Jean."
+        },
+        {
+            "start": 24.36,
+            "end": 25.88,
+            "str": "Vous avez encore perdu <quelque chose>?"
+        },
+        {
+            "start": 25.88,
+            "end": 27.36,
+            "str": "Et oui, il me <semble>."
+        },
+        {
+            "start": 27.36,
+            "end": 29.92,
+            "str": "Le <problème> c'est que je ne sais même plus quoi."
+        },
+        {
+            "start": 29.92,
+            "end": 32.159,
+            "str": "Je suis <sûr> que ça va me revenir."
+        },
+        {
+            "start": 32.159,
+            "end": 33.76,
+            "str": "Où <est-ce que> tu vas?"
+        },
+        {
+            "start": 33.76,
+            "end": 36.12,
+            "str": "Rendre un <livre> au père Robert."
+        },
+        {
+            "start": 36.12,
+            "end": 38.28,
+            "str": "Ça parlait de <deux> amants maudits à Vérone."
+        },
+        {
+            "start": 38.28,
+            "end": 39.96,
+            "str": "D'un <ennui> mortel."
+        },
+        {
+            "start": 39.96,
+            "end": 44.12,
+            "str": "La <tête> ailleurs et ce petit air audacieux"
+        },
+        {
+            "start": 44.12,
+            "end": 45.92,
+            "str": "d'un chat sauvage sous une <ombrelle>"
+        },
+        {
+            "start": 49.36,
+            "end": 53.2,
+            "str": "Elle prétend être à la <page> mais elle est dans les <nuages>"
+        },
+        {
+            "start": 53.2,
+            "end": 59.2,
+            "str": "C'est vrai qu'elle est très bizarre <Mademoiselle> Belle"
+        }
+    ]
+}
