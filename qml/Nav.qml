@@ -6,6 +6,7 @@ Item {
 
     id: nav
     property alias ccButton: ccButton
+    property var navBackSignal
 
     Row {
         id: row
@@ -48,6 +49,22 @@ Item {
             height: row.minWidth
             bgColorPressed: bgColorPressed
             fgColor: fgColor
+        }
+    }
+
+    IconButton {
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: dp(10)
+        width: row.minWidth
+        height: row.minWidth
+        icon: IconType.arrowleft
+        color: row.fgColor
+        selectedColor: row.bgColorPressed
+        onClicked: {
+            video.stop()
+            reset()
+            backSignal()
         }
     }
 
