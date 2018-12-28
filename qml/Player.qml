@@ -4,14 +4,9 @@ import QtQuick 2.5
 import QtMultimedia 5.0
 
 Item {
-    // You get free licenseKeys from https://v-play.net/licenseKey
-    // With a licenseKey you can:
-    //  * Publish your games & apps for the app stores
-    //  * Remove the V-Play Splash Screen or set a custom one (available with the Pro Licenses)
-    //  * Add plugins to monetize, analyze & improve your apps (available with the Pro Licenses)
-    //licenseKey: "<generate one from https://v-play.net/licenseKey>"
-
-    property string fileName: "../assets/La La Land 1.m4v"
+    property string movFileName: ""
+    property var backSignal
+    property alias video: video
 
     EntityManager {
         id: entityManager
@@ -21,10 +16,6 @@ Item {
     Page {
         id: page
 
-        Component.onCompleted: {
-            parseJson("../assets/subs.json")
-        }
-
         Rectangle {
             color: "black"
             anchors.fill: parent
@@ -33,7 +24,7 @@ Item {
         Video {
             id: video
             anchors.fill: parent
-            source: fileName
+            source: movFileName
             autoPlay: false
 
             MouseArea {
@@ -72,10 +63,12 @@ Item {
 
         Nav {
             id: nav
+            navBackSignal: backSignal
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
             anchors.topMargin: 40
-            Behavior on opacity {NumberAnimation {duration: 500} }
+            width: parent.width
+            Behavior on opacity {NumberAnimation {duration: 500}}
         }
     }
 
@@ -123,6 +116,18 @@ Item {
         } else {
             video.play()
         }
+    }
+
+    function reset() {
+        startTime = []
+        endTime = []
+        str = []
+        ans = []
+        currIdx = -1
+        prevIdx = -1
+        readyToDelete = false
+        pause = false
+        entityManager.removeAllEntities()
     }
 
     function skipBack() {
