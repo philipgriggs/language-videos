@@ -58,4 +58,5 @@ DISTFILES += \
     qml/Main.qml \
     qml/PlayerSimple.qml \
     qml/MenuScene.qml \
-    qml/PlayerScene.qml
+    qml/PlayerScene.qml \
+    qml/ThumbnailButton.qml
