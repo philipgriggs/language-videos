@@ -54,4 +54,9 @@ DISTFILES += \
     qml/Subtext.qml \
     qml/Nav.qml \
     qml/Slider.qml \
-    qml/CcButton.qml
+    qml/CcButton.qml \
+    qml/Main.qml \
+    qml/PlayerSimple.qml \
+    qml/MenuScene.qml \
+    qml/PlayerScene.qml \
+    qml/ThumbnailButton.qml
