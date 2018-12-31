@@ -8,6 +8,7 @@ Item {
     property string filename
     property string fgFilename
     property string text
+    property var zoomCenter
     signal imgClickSignal
 
     Item {
@@ -35,6 +36,10 @@ Item {
             height: parent.height
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenterOffset: (height - parent.height)/parent.height * (parent.width/2 - main.zoomCenter[0])
+            anchors.verticalCenterOffset: (height - parent.height)/parent.height * (parent.height/2 - main.zoomCenter[1])
             visible: true
             Behavior on height {
                 NumberAnimation {

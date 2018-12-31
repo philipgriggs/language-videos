@@ -14,6 +14,8 @@ Scene {
     property var thumbnailFiles: ['LaLaLand.png', 'BelleEtLaBete.png', 'JohnnyEnglish.png']
     property var thumbnailFgFiles: ['LaLaLandFg.png', 'BelleEtLaBeteFg.png', 'JohnnyEnglishFg.png']
     property int btnWidth: dp(200)
+    property int btnHeight: btnWidth
+    property var zoomCentre: [[btnWidth/2.2, btnHeight/2.5], [btnWidth/2, btnHeight/2], [btnWidth/2.5, btnHeight/1.85]]
 
     Page {
         id: mainPage
@@ -31,8 +33,9 @@ Scene {
                     filename: "../assets/thumbnails/" + thumbnailFiles[index]
                     fgFilename: "../assets/thumbnails/" + thumbnailFgFiles[index]
                     width: btnWidth
-                    height: btnWidth
+                    height: btnHeight
                     text: dispName[index]
+                    zoomCenter: zoomCentre[index]
                     onImgClickSignal: loadVideo(movFiles[index], subsFiles[index])
                 }
             }
