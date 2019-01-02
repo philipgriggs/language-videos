@@ -8,21 +8,21 @@ Scene {
     signal sceneChange(string scene)
     signal loadVideo(string movFileName, string subsFileName)
 
-    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English']
-    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4']
-    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json']
-    property var thumbnailFiles: ['LaLaLand.png', 'BelleEtLaBete.png', 'JohnnyEnglish.png']
-    property var thumbnailFgFiles: ['LaLaLandFg.png', 'BelleEtLaBeteFg.png', 'JohnnyEnglishFg.png']
+    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Vice Versa']
+    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', '']
+    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', '']
+    property var thumbnailFiles: ['LaLaLand.png', 'BelleEtLaBete.png', 'JohnnyEnglish.png', 'ViceVersa.png']
+    property var thumbnailFgFiles: ['LaLaLandFg.png', 'BelleEtLaBeteFg.png', 'JohnnyEnglishFg.png', 'ViceVersaFg.png']
     property int btnWidth: dp(200)
     property int btnHeight: btnWidth
-    property var zoomCentre: [[btnWidth/2.2, btnHeight/2.5], [btnWidth/2, btnHeight/2], [btnWidth/2.5, btnHeight/1.85]]
+    property var zoomCentre: [[btnWidth/2.2, btnHeight/2.5], [btnWidth/2, btnHeight/2], [btnWidth/2.5, btnHeight/1.85], [btnWidth/2, btnHeight/1.85]]
 
     Page {
         id: mainPage
 
         Row {
             anchors.centerIn: parent
-            spacing: 0.5*btnWidth
+            spacing: 0.3*btnWidth
 
             Repeater {
                 id: repeater
