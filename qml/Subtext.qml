@@ -94,13 +94,13 @@ EntityBase {
 
     SoundEffectVPlay {
       id: correct
-      source: "../assets/correct.wav"
+      source: "../assets/snd/correct.wav"
       volume: 0.2
     }
 
     SoundEffectVPlay {
       id: incorrect
-      source: "../assets/incorrect.wav"
+      source: "../assets/snd/incorrect.wav"
       volume: 0.2
     }
 }
