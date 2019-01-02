@@ -98,7 +98,13 @@ Item {
         interval: 20
         running: video.playbackState === MediaPlayer.PlayingState && !runDownTimer.running
         repeat: true
-        onTriggered: dispCurrSub()
+        onTriggered: {
+            if (nav.ccButton.isOn) {
+                dispCurrSub()
+            } else {
+                entityManager.removeAllEntities()
+            }
+        }
     }
 
     property var startTime: []
