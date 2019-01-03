@@ -29,23 +29,22 @@ EntityBase {
                 property var txtObj: [text, textEdit, textEditText]
                 AppText {
                     id: text
-                    width: 0
+                    width: text.paintedWidth
                     color: "white"
                     text: str[index]
                     horizontalAlignment: Text.AlignLeft
                 }
 
                 Item {
+                    height: textEditText.paintedHeight
                     width: textEditText.width
-                    anchors.left: text.right
-                    anchors.bottom: text.bottom
 
                     AppTextEdit {
                         property bool success: false
                         id: textEdit
                         width: textEditText.paintedWidth
                         anchors.left: parent.left
-                        anchors.bottom: parent.bottom
+                        anchors.verticalCenter: parent.verticalCenter
                         color: success ? "green" : "white"
                         font.pointSize: text.font.pointSize
                         placeholderText: blank[index]
@@ -54,8 +53,6 @@ EntityBase {
                             if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
                                 success = true
                                 rightAns[rightAnsIdx][index] = true
-    //                            subTextEntity.rightAnsChanged()
-
                                 correct.play()
 
                                 nRightAns += 1
@@ -79,22 +76,24 @@ EntityBase {
                     }
 
                     LineItem {
+                        visible: !(rightAns[rightAnsIdx][index] === true || textEdit.success)
                         color: "white"
                         anchors.left: parent.left
+                        anchors.bottom: parent.bottom
                         points: [
-                          {"x": 0, "y": 0},
-                          {"x": textEditText.paintedWidth, "y": 0}
+                            {"x": 0, "y": 0},
+                            {"x": textEditText.paintedWidth, "y": 0}
                         ]
                     }
-                }
 
-                AppText {
-                    id: textEditText
-                    width: 0
-                    color: rightAns[rightAnsIdx][index] === true ? "#dddddd" : "#33dddddd"
-                    text: ans[index]
-                    horizontalAlignment: Text.AlignLeft
-                    anchors.left: text.right
+                    AppText {
+                        id: textEditText
+                        anchors.left: parent.left
+                        width: textEditText.paintedWidth
+                        color: rightAns[rightAnsIdx][index] === true ? "#bbbbbb" : "#00dddddd"
+                        text: ans[index]
+                        horizontalAlignment: Text.AlignLeft
+                    }
                 }
             }
         }
@@ -112,14 +111,14 @@ EntityBase {
     }
 
     SoundEffectVPlay {
-      id: correct
-      source: "../assets/snd/correct.wav"
-      volume: 0.2
+        id: correct
+        source: "../assets/snd/correct.wav"
+        volume: 0.2
     }
 
     SoundEffectVPlay {
-      id: incorrect
-      source: "../assets/snd/incorrect.wav"
-      volume: 0.2
+        id: incorrect
+        source: "../assets/snd/incorrect.wav"
+        volume: 0.2
     }
 }

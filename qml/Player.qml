@@ -226,7 +226,7 @@ Item {
                 if(complete === false) {
                     for(i=0; i<currAns.length; i++) {
                         if(currAns[i] !== "") {
-                            currBlank[i] = currBlank[i].replace(/.?/g, '_')
+                            currBlank[i] = currBlank[i].replace(/.?/g, ' ')
                             pause = true
                             blanksLength++
                         }
@@ -324,12 +324,11 @@ Item {
             ans.push(strToAdd[1])
             var correctToAdd = [];
             for (var j=0; j<strToAdd[1].length; j++) {
-                if(strToAdd[1][i] !== "") {
+                if(strToAdd[1][j] !== "") {
                     correctToAdd.push(false)
                 }
             }
             rightAns.push(correctToAdd)
-            complete.push(false)
         }
     }
 
