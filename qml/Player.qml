@@ -111,6 +111,7 @@ Item {
     property var endTime: []
     property var str: []
     property var ans: []
+    property var rightAns: []
     property int currIdx: -1
     property int prevIdx: -1
     property bool readyToDelete: false
@@ -129,6 +130,7 @@ Item {
         endTime = []
         str = []
         ans = []
+        rightAns = []
         currIdx = -1
         prevIdx = -1
         readyToDelete = false
@@ -206,16 +208,28 @@ Item {
                 var currBlank = ans[currIdx].slice()
                 var currAns = ans[currIdx].slice()
                 var blanksLength = 0
-                var rightAns = []
+                var nRightAns = 0
+                var complete = false
 
                 // check whether the current subtitle has a missing blank
                 pause = false
-                for(var i=0; i<currAns.length; i++) {
-                    if(currAns[i] !== "") {
-                        currBlank[i] = currBlank[i].replace(/.?/g, '_')
-                        pause = true
-                        blanksLength++
-                        rightAns.push(0)
+                // check whether the current subtitle has already been filled in correctly
+                for(var i=0; i<rightAns[currIdx].length; i++) {
+                    if(rightAns[currIdx][i] === true) {
+                        nRightAns++
+                    }
+                }
+                if(nRightAns === rightAns[currIdx].length) {
+                   complete = true
+                }
+
+                if(complete === false) {
+                    for(i=0; i<currAns.length; i++) {
+                        if(currAns[i] !== "") {
+                            currBlank[i] = currBlank[i].replace(/.?/g, '_')
+                            pause = true
+                            blanksLength++
+                        }
                     }
                 }
 
@@ -226,11 +240,13 @@ Item {
                     str: currStr,
                     ans: currAns,
                     blank: currBlank,
-                    nAnsNeeded: blanksLength,
                     rightAns: rightAns,
+                    rightAnsIdx: currIdx,
+                    nAnsNeeded: blanksLength,
                     repeats: currStr.length,
                     entityId: "SubText",
                     video: video,
+                    parentAns: rightAns,
                     ccButton: nav.ccButton,
                 }
 
@@ -306,6 +322,14 @@ Item {
             var strToAdd = strSplit(jsonObj.data[i].str)
             str.push(strToAdd[0])
             ans.push(strToAdd[1])
+            var correctToAdd = [];
+            for (var j=0; j<strToAdd[1].length; j++) {
+                if(strToAdd[1][i] !== "") {
+                    correctToAdd.push(false)
+                }
+            }
+            rightAns.push(correctToAdd)
+            complete.push(false)
         }
     }
 
