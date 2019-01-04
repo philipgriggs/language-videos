@@ -20,7 +20,7 @@ EntityBase {
     property var video: null
     property var ccButton: null
 
-    Row{
+    Row {
         anchors.centerIn: parent
         visible: ccButton.isOn
         Repeater {
@@ -44,6 +44,7 @@ EntityBase {
                     AppTextEdit {
                         property bool success: false
                         property bool fail: false
+                        property int textEditIncorrect: incorrectTries[rightAnsIdx][index] != undefined ? incorrectTries[rightAnsIdx][index] : 0
                         id: textEdit
                         width: textEditText.paintedWidth
                         anchors.left: parent.left
@@ -53,26 +54,30 @@ EntityBase {
                         placeholderText: blank[index]
                         visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
                         Keys.onReturnPressed: {
-                            if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
-                                success = true
-                                rightAns[rightAnsIdx][index] = true
-                                correct.play()
+                            if (success === false) {
+                                if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
+                                    incorrectLineAnim.duration = 200 * (maxTries - textEdit.textEditIncorrect)
+                                    success = true
+                                    rightAns[rightAnsIdx][index] = true
+                                    correct.play()
 
-                                nRightAns += 1
-                                if(nRightAns === nAnsNeeded) {
-                                    focus = false
-                                    video.focus = true
-                                    successRundown.start()
-                                } else if (index + 1 < ans.length) {
-                                    repeater.itemAt(index+1).txtObj[1].focus = true
-                                }
-                            } else {
-                                textEdit.text = ""
-                                incorrect.play()
-                                incorrectTries[rightAnsIdx][index]++
-                                if(incorrectTries[rightAnsIdx][index] >= maxTries) {
-                                    fail = true
-                                    visible = false
+                                    nRightAns++
+                                    if(nRightAns === nAnsNeeded) {
+                                        focus = false
+                                        video.focus = true
+                                        //successRundown.start()
+                                    } else if (index + 1 < ans.length) {
+                                        repeater.itemAt(index+1).txtObj[1].focus = true
+                                    }
+                                } else {
+                                    textEdit.text = ""
+                                    incorrect.play()
+                                    incorrectTries[rightAnsIdx][index]++
+                                    textEdit.textEditIncorrect++
+                                    if(incorrectTries[rightAnsIdx][index] >= maxTries) {
+                                        fail = true
+                                        visible = false
+                                    }
                                 }
                             }
                         }
@@ -84,7 +89,8 @@ EntityBase {
                     }
 
                     LineItem {
-                        visible: !(rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries || textEdit.success || textEdit.fail)
+                        id: blankLine
+                        visible: !(rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries) && incorrectLine.opacity > 0
                         color: "white"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
@@ -92,6 +98,21 @@ EntityBase {
                             {"x": 0, "y": 0},
                             {"x": textEditText.paintedWidth, "y": 0}
                         ]
+                    }
+
+                    LineItem {
+                        id: incorrectLine
+                        property real wdth: !(rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries || textEdit.success) ? textEdit.textEditIncorrect/maxTries * textEditText.paintedWidth : textEditText.paintedWidth
+                        opacity: wdth < textEditText.paintedWidth ? 1 : 0
+                        color: textEdit.success ? "green" : "red"
+                        anchors.left: parent.left
+                        anchors.bottom: parent.bottom
+                        points: [
+                            {"x": 0, "y": 0},
+                            {"x": wdth, "y": 0}
+                        ]
+                        Behavior on wdth {NumberAnimation {id: incorrectLineAnim; duration: 200; easing.type: Easing.InOutSine}}
+                        Behavior on opacity {NumberAnimation {duration: 300}}
                     }
 
                     AppText {
