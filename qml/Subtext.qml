@@ -11,11 +11,13 @@ EntityBase {
     property var ans: [""]
     property var rightAns: null
     property int rightAnsIdx: 0
+    property var incorrectTries: null
     property int nRightAns: 0
     property int nAnsNeeded: 0
-    property var video: null
+    property int maxTries: 0
     property int repeats: 1
     property alias repeater: repeater
+    property var video: null
     property var ccButton: null
 
     Row{
@@ -41,14 +43,15 @@ EntityBase {
 
                     AppTextEdit {
                         property bool success: false
+                        property bool fail: false
                         id: textEdit
                         width: textEditText.paintedWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        color: success ? "green" : "white"
+                        color: success ? "green" : fail ? "red" : "white"
                         font.pointSize: text.font.pointSize
                         placeholderText: blank[index]
-                        visible: rightAns[rightAnsIdx][index] === false
+                        visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
                         Keys.onReturnPressed: {
                             if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
                                 success = true
@@ -56,16 +59,21 @@ EntityBase {
                                 correct.play()
 
                                 nRightAns += 1
-                                if(nRightAns == nAnsNeeded) {
+                                if(nRightAns === nAnsNeeded) {
                                     focus = false
                                     video.focus = true
-                                    // successRundown.start()
+                                    successRundown.start()
                                 } else if (index + 1 < ans.length) {
                                     repeater.itemAt(index+1).txtObj[1].focus = true
                                 }
                             } else {
                                 textEdit.text = ""
                                 incorrect.play()
+                                incorrectTries[rightAnsIdx][index]++
+                                if(incorrectTries[rightAnsIdx][index] >= maxTries) {
+                                    fail = true
+                                    visible = false
+                                }
                             }
                         }
                         Keys.onTabPressed: {
@@ -76,7 +84,7 @@ EntityBase {
                     }
 
                     LineItem {
-                        visible: !(rightAns[rightAnsIdx][index] === true || textEdit.success)
+                        visible: !(rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries || textEdit.success || textEdit.fail)
                         color: "white"
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
@@ -90,7 +98,7 @@ EntityBase {
                         id: textEditText
                         anchors.left: parent.left
                         width: textEditText.paintedWidth
-                        color: rightAns[rightAnsIdx][index] === true ? "#bbbbbb" : "#00dddddd"
+                        color: (rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries || textEdit.fail === true) ? "#bbbbbb" : "#00dddddd"
                         text: ans[index]
                         horizontalAlignment: Text.AlignLeft
                     }

@@ -112,6 +112,8 @@ Item {
     property var str: []
     property var ans: []
     property var rightAns: []
+    property var incorrectTries: []
+    property int maxTries: 3
     property int currIdx: -1
     property int prevIdx: -1
     property bool readyToDelete: false
@@ -215,7 +217,7 @@ Item {
                 pause = false
                 // check whether the current subtitle has already been filled in correctly
                 for(var i=0; i<rightAns[currIdx].length; i++) {
-                    if(rightAns[currIdx][i] === true) {
+                    if(rightAns[currIdx][i] === true || incorrectTries[currIdx][i] >= maxTries) {
                         nRightAns++
                     }
                 }
@@ -242,7 +244,9 @@ Item {
                     blank: currBlank,
                     rightAns: rightAns,
                     rightAnsIdx: currIdx,
-                    nAnsNeeded: blanksLength,
+                    nAnsNeeded: blanksLength - nRightAns,
+                    incorrectTries: incorrectTries,
+                    maxTries: maxTries,
                     repeats: currStr.length,
                     entityId: "SubText",
                     video: video,
@@ -322,13 +326,18 @@ Item {
             var strToAdd = strSplit(jsonObj.data[i].str)
             str.push(strToAdd[0])
             ans.push(strToAdd[1])
+
+            // set up variables needed to store whether user's responses were correct or incorrect
             var correctToAdd = [];
+            var incorrectTriesToAdd = [];
             for (var j=0; j<strToAdd[1].length; j++) {
                 if(strToAdd[1][j] !== "") {
                     correctToAdd.push(false)
+                    incorrectTriesToAdd.push(0)
                 }
             }
             rightAns.push(correctToAdd)
+            incorrectTries.push(incorrectTriesToAdd)
         }
     }
 
