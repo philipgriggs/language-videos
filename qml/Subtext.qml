@@ -19,6 +19,7 @@ EntityBase {
     property alias repeater: repeater
     property var video: null
     property var ccButton: null
+    property var scoreChange
 
     Row {
         anchors.centerIn: parent
@@ -60,6 +61,7 @@ EntityBase {
                                     success = true
                                     rightAns[rightAnsIdx][index] = true
                                     correct.play()
+                                    scoreChange()
 
                                     nRightAns++
                                     if(nRightAns === nAnsNeeded) {
@@ -77,6 +79,7 @@ EntityBase {
                                     if(incorrectTries[rightAnsIdx][index] >= maxTries) {
                                         fail = true
                                         visible = false
+                                        scoreChange()
                                     }
                                 }
                             }

@@ -4,9 +4,23 @@ import QtQuick 2.5
 import QtMultimedia 5.0
 
 Item {
+    id: player
+
     property string movFileName: ""
     property var backSignal
     property alias video: video
+    property var startTime: []
+    property var endTime: []
+    property var str: []
+    property var ans: []
+    property var rightAns: []
+    property var incorrectTries: []
+    property int maxTries: 3
+    property var score: [0, 0, 0]  // number correct, incorrect and total
+    property int currIdx: -1
+    property int prevIdx: -1
+    property bool readyToDelete: false
+    property bool pause: false
 
     EntityManager {
         id: entityManager
@@ -15,6 +29,7 @@ Item {
 
     Page {
         id: page
+        anchors.fill: parent
 
         Rectangle {
             color: "black"
@@ -70,6 +85,26 @@ Item {
             width: parent.width
             Behavior on opacity {NumberAnimation {duration: 500}}
         }
+
+        ProgressBar {
+            anchors.top: parent.top
+            anchors.topMargin: dp(7)
+            anchors.right: parent.right
+            anchors.rightMargin: dp(80)
+            scoreText.visible: false
+            color: "red"
+            value: (player.score[0] + player.score[1]) / player.score[2]
+        }
+
+        ProgressBar {
+            anchors.top: parent.top
+            anchors.topMargin: dp(7)
+            anchors.right: parent.right
+            anchors.rightMargin: dp(80)
+            color: "green"
+            value: player.score[0] / player.score[2]
+            score: player.score[0]
+        }
     }
 
     Timer {
@@ -107,17 +142,24 @@ Item {
         }
     }
 
-    property var startTime: []
-    property var endTime: []
-    property var str: []
-    property var ans: []
-    property var rightAns: []
-    property var incorrectTries: []
-    property int maxTries: 3
-    property int currIdx: -1
-    property int prevIdx: -1
-    property bool readyToDelete: false
-    property bool pause: false
+    function calcScore() {
+        var total = 0
+        var correct = 0
+        var incorrect = 0
+        for(var i = 0; i < rightAns.length; i++) {
+            for(var j = 0; j < rightAns[i].length; j++) {
+                total++
+                if(rightAns[i][j] === true) {
+                    correct++
+                }
+                if(incorrectTries[i][j] >= maxTries) {
+                    incorrect++
+                }
+            }
+        }
+
+        score = [correct, incorrect, total]
+    }
 
     function playPause() {
         if (video.playbackState === MediaPlayer.PlayingState) {
@@ -252,6 +294,7 @@ Item {
                     video: video,
                     parentAns: rightAns,
                     ccButton: nav.ccButton,
+                    scoreChange: calcScore,
                 }
 
                 var entityId = entityManager.createEntityFromUrlWithProperties(
