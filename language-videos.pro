@@ -59,4 +59,5 @@ DISTFILES += \
     qml/PlayerSimple.qml \
     qml/MenuScene.qml \
     qml/PlayerScene.qml \
-    qml/ThumbnailButton.qml
+    qml/ThumbnailButton.qml \
+    qml/ProgressBar.qml
