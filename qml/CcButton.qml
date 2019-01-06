@@ -29,26 +29,40 @@ Item {
     }
 
     LineItem {
-        property real xStart: 0.2*width
-        property real yStart: 0.8*height
-        property real xEnd: isOn ? 0.2*width : 0.8*width
-        property real yEnd: isOn ? 0.8*height : 0.2*height
+        id: line
+        property real xStart: 0.25*parent.width
+        property real yStart: 0.75*parent.height
+        property real xEnd: isOn ? 0.25*parent.width : 0.75*parent.width
+        property real yEnd: isOn ? 0.75*parent.height : 0.25*parent.height
 
-        Behavior on xEnd {animation: transition}
-        Behavior on yEnd {animation: transition}
+        Behavior on xEnd {NumberAnimation {duration: 200; easing.type: Easing.InOutSine}}
+        Behavior on yEnd {NumberAnimation {duration: 200; easing.type: Easing.InOutSine}}
 
         anchors.fill: parent
         color: fgColor
+        lineWidth: dp(1.5)
         points: [
           {"x": xStart, "y": yStart},
           {"x": xEnd, "y": yEnd}
         ]
     }
 
-    NumberAnimation {
-        id: transition
-        easing {
-            type: Easing.Linear
-        }
+    LineItem {
+        property real offset: line.lineWidth/2
+        property real xStart: 0.25*parent.width + offset
+        property real yStart: 0.75*parent.height + offset
+        property real xEnd: isOn ? 0.25*parent.width + offset : 0.75*parent.width + offset
+        property real yEnd: isOn ? 0.75*parent.height + offset : 0.25*parent.height + offset
+
+        Behavior on xEnd {NumberAnimation {duration: 200; easing.type: Easing.InOutSine}}
+        Behavior on yEnd {NumberAnimation {duration: 200; easing.type: Easing.InOutSine}}
+
+        anchors.fill: parent
+        color: "black"
+        lineWidth: line.lineWidth
+        points: [
+          {"x": xStart, "y": yStart},
+          {"x": xEnd, "y": yEnd}
+        ]
     }
 }

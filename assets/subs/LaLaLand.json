@@ -3,7 +3,7 @@
         {
             "start": 13.0,
             "end": 16.7,
-            "str": "s'il vous plaît, c'est bien sans <gluten>"
+            "str": "<s'il> vous plaît, c'est bien sans <gluten>"
         },
         {
             "start": 16.7,
@@ -68,7 +68,7 @@
         {
             "start": 50.8,
             "end": 52.0,
-            "str": "<Qu'est ce que> tu fais là?"
+            "str": "<Qu'est-ce que> tu fais là?"
         },
         {
             "start": 52.0,
@@ -163,7 +163,7 @@
         {
             "start": 109.6,
             "end": 113.1,
-            "str": "moi, je <préfère> 8 km pour boire un café juste pour être à côté d'un club de jazz"
+            "str": "moi, je <préfére> 8 km pour boire un café juste pour être à côté d'un club de jazz"
         },
         {
             "start": 113.12,
@@ -223,7 +223,7 @@
         {
             "start": 147.9,
             "end": 149.2,
-            "str": "<Je l'adore!>"
+            "str": "<Je l'adore>!"
         },
         {
             "start": 150.0,
@@ -298,7 +298,7 @@
         {
             "start": 223.18,
             "end": 226.84,
-            "str": "et puis après j'ai quitté la fac au bout de <deux ans> pour venir ici et"
+            "str": "et puis après j'ai quitté la fac au bout <deux ans> pour venir ici et"
         },
         {
             "start": 226.84,
@@ -368,7 +368,7 @@
         {
             "start": 264.5,
             "end": 265.28,
-            "str": "<Qu'est ce> qu'il a fait?"
+            "str": "<Qu'est-ce> qu'il a fait?"
         },
         {
             "start": 265.28,
@@ -398,7 +398,7 @@
         {
             "start": 283.6,
             "end": 286.14,
-            "str": "Qu'est ce que tu <veux dire> tu détestes le jazz?"
+            "str": "Qu'est-ce que tu <veux dire> tu détestes le jazz?"
         },
         {
             "start": 286.14,
