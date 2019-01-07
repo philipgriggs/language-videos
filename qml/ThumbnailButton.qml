@@ -8,17 +8,23 @@ Item {
     property string filename
     property string fgFilename
     property string text
+    property real zoomFactor
+    property real zoomMax: 0.05
+    property real zoomMaxFg: 0.12
     property var zoomCenter
+    property alias clipper: clipper
+    property alias reflection: reflection
     signal imgClickSignal
 
     Item {
+        id: clipper
         clip: true
         anchors.fill: parent
 
         Image {
             id: thumbnail
             source: filename
-            height: parent.height
+            height: parent.height * (1 + zoomFactor*zoomMax)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
             visible: true
@@ -33,13 +39,14 @@ Item {
         Image {
             id: thumbnailFg
             source: fgFilename
-            height: parent.height
+            height: parent.height * (1 + zoomFactor*zoomMaxFg)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenterOffset: (height - parent.height)/parent.height * (parent.width/2 - main.zoomCenter[0])
             anchors.verticalCenterOffset: (height - parent.height)/parent.height * (parent.height/2 - main.zoomCenter[1])
+
             visible: true
             Behavior on height {
                 NumberAnimation {
@@ -59,9 +66,9 @@ Item {
         LinearGradient {
             id: gradient
             anchors.fill: parent
-            opacity: 0
-            start: Qt.point(0, 0.5*parent.height)
-            end: Qt.point(0, parent.height)
+            opacity: zoomFactor
+            start: Qt.point(0, 0.5*height)
+            end: Qt.point(0, height)
             gradient: Gradient {
                 GradientStop { position: 0.0; color: "#00000000" }
                 GradientStop { position: 1.0; color: "black" }
@@ -73,7 +80,7 @@ Item {
             Behavior on opacity {
                 NumberAnimation {
                     duration: 500
-                    easing.type: Easing.OutSine
+                    easing.type: Easing.InOutSine
                 }
             }
         }
@@ -82,18 +89,12 @@ Item {
             id: appText
             text: main.text
             color: "white"
-            opacity: 0
+            opacity: zoomFactor
             anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottomMargin: dp(5)
             horizontalAlignment: Text.AlignHCenter
             Behavior on opacity {
-                NumberAnimation {
-                    duration: 500
-                    easing.type: Easing.OutSine
-                }
-            }
-            Behavior on anchors.bottomMargin {
                 NumberAnimation {
                     duration: 500
                     easing.type: Easing.InOutSine
@@ -110,20 +111,51 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            hoverEnabled: true
-            onEntered: {
-                thumbnail.height = parent.height * 1.05
-                thumbnailFg.height = parent.height * 1.12
-                appText.opacity = 1
-                gradient.opacity = 1
-            }
-            onExited: {
-                thumbnail.height = parent.height
-                thumbnailFg.height = parent.height
-                appText.opacity = 0
-                gradient.opacity = 0
-            }
             onClicked: imgClickSignal()
+        }
+    }
+
+    Item {
+        id: reflection
+        clip: true
+        width: parent.width
+        height: parent.height
+        anchors.top: parent.bottom
+
+        Image {
+            id: thumbnailReflection
+            source: filename
+            height: parent.height * (1 + zoomFactor*zoomMax)
+            fillMode: Image.PreserveAspectFit
+            anchors.centerIn: parent
+            visible: true
+            opacity: 0.1
+            Behavior on height {
+                NumberAnimation {
+                    duration: 500
+                    easing.type: Easing.InOutSine
+                }
+            }
+            transform: Rotation { origin.x: 0; origin.y: height/2; axis { x: 1; y: 0; z: 0 } angle: 180 }
+        }
+
+        LinearGradient {
+            visible: false
+            id: reflectionMask
+            anchors.fill: parent
+            start: Qt.point(0, 0)
+            end: Qt.point(0, height/1.5)
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#88000000" }
+                GradientStop { position: 1.0; color: "#00000000" }
+            }
+        }
+
+        OpacityMask {
+            visible: false
+            anchors.fill: parent
+            source: thumbnailReflection
+            maskSource: reflectionMask
         }
     }
 }
