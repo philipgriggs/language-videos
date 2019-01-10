@@ -1,6 +1,7 @@
 import VPlay 2.0
 import VPlayApps 1.0
 import QtQuick 2.0
+import QtMultimedia 5.9
 
 Scene {
     id: playerScene
@@ -15,6 +16,17 @@ Scene {
         loader.item.parseJson("../assets/subs/" + subsFileName)
         loader.item.video.focus = true
     }
+
+    Keys.onSpacePressed: {
+        if (loader.item.video.playbackState === MediaPlayer.PlayingState) {
+            loader.item.video.pause()
+        } else {
+            loader.item.dispCurrSub()
+            loader.item.skipBack()
+        }
+    }
+    Keys.onLeftPressed: loader.item.skipBack()
+    Keys.onRightPressed: loader.item.skipForward()
 
     // load levels at runtime
     Loader {
