@@ -10,11 +10,23 @@ Scene {
     signal loadVideo(string movFileName, string subsFileName)
 
     property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Vice Versa']
-    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', '']
-    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', '']
+    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4']
+    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', 'ViceVersa.json']
     property var thumbnailFiles: ['LaLaLand.png', 'BelleEtLaBete.png', 'JohnnyEnglish.png', 'ViceVersa.png']
     property var thumbnailFgFiles: ['LaLaLandFg.png', 'BelleEtLaBeteFg.png', 'JohnnyEnglishFg.png', 'ViceVersaFg.png']
     property var zoomCentre: [[1/2.2, 1/2.5], [1/2, 1/2], [1/2.5, 1/1.85], [1/2, 1/1.85]]
+
+    function alignMiddle() {
+        listView.positionViewAtIndex(listView.model * 0.5 - (listView.numberOfItems > 2 ? 1 : 0), ListView.SnapPosition)
+    }
+
+    // needed because 'onCompleted' isn't firing correctly
+    Timer {
+        running: true
+        repeat: false
+        interval: 50
+        onTriggered: alignMiddle()
+    }
 
     Page {
         id: mainPage
@@ -161,7 +173,7 @@ Scene {
                 }
                 Component.onCompleted: {
                     // Scrolls to middle of list
-                    positionViewAtIndex(model * 0.5 - (listView.numberOfItems > 2 ? 1 : 0), ListView.SnapPosition)
+                    alignMiddle()
                 }
             }
         }
