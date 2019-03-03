@@ -60,4 +60,5 @@ DISTFILES += \
     qml/MenuScene.qml \
     qml/PlayerScene.qml \
     qml/ThumbnailButton.qml \
-    qml/ProgressBar.qml
+    qml/ProgressBar.qml \
+    qml/AccentsPopup.qml

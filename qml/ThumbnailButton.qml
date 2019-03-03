@@ -1,5 +1,5 @@
 import VPlayApps 1.0
-import QtQuick 2.0
+import QtQuick 2.10
 import QtGraphicalEffects 1.0
 
 Item {
@@ -20,6 +20,19 @@ Item {
         id: clipper
         clip: true
         anchors.fill: parent
+        // apply roundned corners
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: mask
+        }
+
+        Rectangle {
+            id: mask
+            opacity: 0
+            width: parent.width
+            height: parent.height
+            radius: 0.05*height
+        }
 
         Image {
             id: thumbnail
@@ -46,21 +59,12 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenterOffset: (height - parent.height)/parent.height * (parent.width/2 - main.zoomCenter[0])
             anchors.verticalCenterOffset: (height - parent.height)/parent.height * (parent.height/2 - main.zoomCenter[1])
-
-            visible: true
             Behavior on height {
                 NumberAnimation {
                     duration: 500
                     easing.type: Easing.InOutSine
                 }
             }
-        }
-
-        OpacityMask {
-            visible: false
-            anchors.fill: parent
-            source: thumbnail
-            maskSource: mask
         }
 
         LinearGradient {
@@ -102,13 +106,6 @@ Item {
             }
         }
 
-        Rectangle {
-            id: mask
-            anchors.fill: parent
-            radius: 0.05*height
-            visible: false
-        }
-
         MouseArea {
             anchors.fill: parent
             onClicked: imgClickSignal()
@@ -117,10 +114,33 @@ Item {
 
     Item {
         id: reflection
-        clip: true
         width: parent.width
         height: parent.height
         anchors.top: parent.bottom
+        layer.enabled: true
+        layer.effect: OpacityMask {
+            maskSource: reflectionMask
+        }
+
+        Rectangle {
+            id: reflectionMask
+            visible: false
+            width: parent.width
+            height: parent.height
+            radius: 0.05*height
+        }
+
+        LinearGradient {
+            id: reflectionGradient
+            anchors.fill: parent
+            start: Qt.point(0, 0)
+            end: Qt.point(0, 2*height)
+            visible: false
+            gradient: Gradient {
+                GradientStop { position: 1.0; color: "#44000000" }
+                GradientStop { position: 0.0; color: "#00000000" }
+            }
+        }
 
         Image {
             id: thumbnailReflection
@@ -128,34 +148,21 @@ Item {
             height: parent.height * (1 + zoomFactor*zoomMax)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
-            visible: true
-            opacity: 0.1
+            visible: false
             Behavior on height {
                 NumberAnimation {
                     duration: 500
                     easing.type: Easing.InOutSine
                 }
             }
-            transform: Rotation { origin.x: 0; origin.y: height/2; axis { x: 1; y: 0; z: 0 } angle: 180 }
-        }
-
-        LinearGradient {
-            visible: false
-            id: reflectionMask
-            anchors.fill: parent
-            start: Qt.point(0, 0)
-            end: Qt.point(0, height/1.5)
-            gradient: Gradient {
-                GradientStop { position: 0.0; color: "#88000000" }
-                GradientStop { position: 1.0; color: "#00000000" }
-            }
         }
 
         OpacityMask {
-            visible: false
-            anchors.fill: parent
+            anchors.fill: thumbnailReflection
             source: thumbnailReflection
-            maskSource: reflectionMask
+            maskSource: reflectionGradient
+            visible: true
+            transform: Rotation { origin.x: 0; origin.y: height/2; axis { x: 1; y: 0; z: 0 } angle: 180 }
         }
     }
 }
