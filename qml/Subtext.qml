@@ -20,16 +20,25 @@ EntityBase {
     property var video: null
     property var ccButton: null
     property var scoreChange
+    property bool showAccents: false
+    property string grey: "#eeeeee"
+    property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "u": ["û"], "c": ["ç"]}
+    property var accentList: ["a", "e", "i", "u", "c"]
+    property var accentKeys: {"a": Qt.Key_A, "e": Qt.Key_E, "i": Qt.Key_I, "u": Qt.Key_U, "c": Qt.Key_C}
+    property string currentAccent: ""
 
     Row {
         anchors.centerIn: parent
         visible: ccButton.isOn
+
         Repeater {
             id: repeater
             model: repeats
 
             Row {
                 property var txtObj: [text, textEdit, textEditText]
+                property alias textAlias: text
+
                 AppText {
                     id: text
                     width: text.paintedWidth
@@ -42,11 +51,13 @@ EntityBase {
                     height: textEditText.paintedHeight
                     width: textEditText.width
 
+                    ShortcutHandler{}
+
                     AppTextEdit {
+                        id: textEdit
                         property bool success: false
                         property bool fail: false
-                        property int textEditIncorrect: incorrectTries[rightAnsIdx][index] != undefined ? incorrectTries[rightAnsIdx][index] : 0
-                        id: textEdit
+                        property int textEditIncorrect: incorrectTries[rightAnsIdx][index] !== undefined ? incorrectTries[rightAnsIdx][index] : 0
                         width: textEditText.paintedWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
@@ -54,6 +65,57 @@ EntityBase {
                         font.pointSize: text.font.pointSize
                         placeholderText: blank[index]
                         visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
+
+                        Keys.onPressed: {
+                            // ignore the control key
+                            if(event.key == Qt.Key_Meta) {
+                                event.accepted = true
+                                return
+                            }
+
+                            // ignore repeats of accent keys: 'a', 'e', etc
+                            if(event.isAutoRepeat) {
+                                var accept = false
+                                forEachAccent(function(chr, key, list) {
+                                    if(event.key == key) {
+                                        accept = true
+                                    }
+                                })
+                                event.accepted = accept
+                                return
+                            }
+
+                            // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
+                            if(showAccents) {
+                                if(event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
+                                    console.log(accents[currentAccent][event.key-Qt.Key_1])
+                                    var cursorIdx = textEdit.cursorPosition
+                                    textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
+                                    textEdit.cursorPosition = cursorIdx
+
+                                    showAccents = false
+                                    currentAccent = ""
+                                    event.accepted = true
+                                    return
+                                }
+                            }
+
+                            // check if the key press was an accent character and if so,
+                            // start a timer to count how long it's held down for
+                            currentAccent = ""
+                            showAccents = false
+                            forEachAccent(function(chr, key, list) {
+                                if(key == event.key) {
+                                    currentAccent = chr
+                                    autoRepeatThreshold.start()
+                                }
+                            })
+                        }
+
+                        Keys.onReleased: {
+                            autoRepeatThreshold.stop()
+                        }
+
                         Keys.onReturnPressed: {
                             if (success === false) {
                                 if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
@@ -84,10 +146,18 @@ EntityBase {
                                 }
                             }
                         }
+
                         Keys.onTabPressed: {
                             if (index + 1 < ans.length) {
                                 repeater.itemAt(index+1).txtObj[1].focus = true
                             }
+                        }
+
+                        AccentsPopup {
+                            id: accentsBox
+                            x: -width/2 + textEdit.cursorRectangle.x
+                            anchors.bottom: parent.top
+                            color: "#ffffff"
                         }
                     }
 
@@ -142,6 +212,16 @@ EntityBase {
         }
     }
 
+    Timer {
+        id: autoRepeatThreshold
+        running: false
+        repeat: false
+        interval: 300
+        onTriggered: {
+            showAccents = true
+        }
+    }
+
     SoundEffectVPlay {
         id: correct
         source: "../assets/snd/correct.wav"
@@ -152,5 +232,20 @@ EntityBase {
         id: incorrect
         source: "../assets/snd/incorrect.wav"
         volume: 0.2
+    }
+
+    function forEachAccent(fn) {
+        for(var i=0; i<accentList.length; i++) {
+            fn(accentList[i], accentKeys[accentList[i]], accents[accentList[i]])
+        }
+    }
+
+    // insert the character at the given cursor index
+    function insertAtCursor(cursorIdx, text, chr, deleteCurr) {
+        var keepIdx = cursorIdx
+        if(deleteCurr) {
+            keepIdx = cursorIdx-1
+        }
+        return text.slice(0, keepIdx) + chr + text.slice(cursorIdx)
     }
 }
