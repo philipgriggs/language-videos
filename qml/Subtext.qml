@@ -37,7 +37,6 @@ EntityBase {
 
             Row {
                 property var txtObj: [text, textEdit, textEditText]
-                property alias textAlias: text
 
                 AppText {
                     id: text
@@ -88,7 +87,6 @@ EntityBase {
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
                             if(showAccents) {
                                 if(event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
-                                    console.log(accents[currentAccent][event.key-Qt.Key_1])
                                     var cursorIdx = textEdit.cursorPosition
                                     textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
