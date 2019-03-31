@@ -3,7 +3,7 @@
         {
             "start": 2.26,
             "end": 5.6,
-            "str": "à ce qu'il paraît le bac vert n'est pas pour les <matières recyclables>"
+            "str": "à ce qu'il <paraît> le bac vert n'est pas pour les <matières recyclables>"
         },
         {
             "start": 5.6,
@@ -117,23 +117,23 @@
         },
         {
             "start": 67.9,
-            "end": 71.3,
+            "end": 71.4,
             "str": "c'était bien <enfin> je crois oh c'est pas trop"
         },
         {
-            "start": 71.3,
-            "end": 74.3,
+            "start": 71.4,
+            "end": 74.4,
             "str": "ah c'était très réussi c'était Joie tout craché <bravo>"
         },
         {
-            "start": 74.32,
+            "start": 74.4,
             "end": 76.5,
             "str": "moi est quelque chose qui va pas <évident>"
         },
         {
             "start": 76.53999999999999,
             "end": 79.08,
-            "str": "<on n'a jamais vu comme ça> c'est pas normal qu'est ce qui lui prend"
+            "str": "<on n'a jamais vu comme ça> c'est pas normal qu'est-ce qui lui prend"
         },
         {
             "start": 79.08,
@@ -148,12 +148,12 @@
         {
             "start": 94.28,
             "end": 95.86,
-            "str": "<on regarde>"
+            "str": "uh oh, <on regarde>"
         },
         {
             "start": 96.44,
             "end": 97.2,
-            "str": "<qu'est ce qu'elle a dit>"
+            "str": "<qu'est-ce qu'elle a dit>"
         },
         {
             "start": 97.2,
@@ -198,7 +198,7 @@
         {
             "start": 120.12,
             "end": 121.8,
-            "str": "pousse vous <je vais faire Joie>"
+            "str": "poussez vous <je vais faire Joie>"
         },
         {
             "start": 122.0,
@@ -218,102 +218,102 @@
         {
             "start": 129.2,
             "end": 133.96,
-            "str": "Mais qu'est ce que là? Bon! Petite démonstration de force avant de devoir taper du poing sur la table"
+            "str": "Mais qu'est-ce que là? Bon! <Petite démonstration> de force avant de devoir taper du poing sur la table"
         },
         {
             "start": 133.96,
-            "end": 135.96,
-            "str": "ah non, pas le poing?"
+            "end": 136.06,
+            "str": "ah non, <pas le poing>?"
         },
         {
-            "start": 136.04,
+            "start": 136.08,
             "end": 138.4,
-            "str": "Riley, je n'aime pas du tout ce genre d'attitude"
+            "str": "Riley, <je n'aime pas du tout> ce genre d'attitude"
         },
         {
             "start": 138.44,
             "end": 142.14,
-            "str": "T'aime pas ça, eh bien tu ?vaille et s'aller?. Tu est Joie!"
+            "str": "<T'aime pas ça>, eh bien tu vaille et s'aller. Tu est Joie!"
         },
         {
             "start": 142.22,
             "end": 144.5,
-            "str": "c'est quoi votre problème laissez moi tranquille"
+            "str": "<c'est quoi votre problème> laissez moi tranquille"
         },
         {
             "start": 144.56,
             "end": 146.46,
-            "str": "niveau d'insolence critique chef"
+            "str": "niveau d'insolence <critique> chef"
         },
         {
             "start": 146.57999999999998,
             "end": 148.4,
-            "str": "passez en alerte maximum"
+            "str": "<passez> en alerte maximum"
         },
         {
             "start": 148.48,
             "end": 151.1,
-            "str": "ok les gars, niveau d'alerte au supérieur"
+            "str": "ok les gars, <niveau d'alerte> au supérieur"
         },
         {
             "start": 151.8,
             "end": 155.34,
-            "str": "je te conseille fortement de ne pas nous parler sur ce temps jeune fille"
+            "str": "je te conseille fortement de ne pas nous parler sur ce temps <jeune fille>"
         },
         {
             "start": 155.4,
             "end": 158.38,
-            "str": "je vais te montrer de quel bois je me chauffe"
+            "str": "je vais <te montrer> de quel bois je me chauffe"
         },
         {
             "start": 159.9,
             "end": 162.68,
-            "str": "ça tourne mal, armé le point"
+            "str": "<ça tourne mal>, armé le poing"
         },
         {
             "start": 163.62,
             "end": 165.32,
-            "str": "double clé en position"
+            "str": "<double clé> en position"
         },
         {
             "start": 167.12,
             "end": 169.24,
-            "str": "parez à taper du poing sur la table"
+            "str": "parez à taper du poing <sur la table>"
         },
         {
             "start": 171.62,
             "end": 173.02,
-            "str": "la ferme!"
+            "str": "<la ferme>!"
         },
         {
             "start": 174.14,
             "end": 174.96,
-            "str": "feur"
+            "str": "<feur>"
         },
         {
             "start": 175.48,
             "end": 178.02,
-            "str": "ça suffit, dans ta chambre!"
+            "str": "ça suffit, <dans ta chambre>!"
         },
         {
             "start": 178.4,
             "end": 179.64,
-            "str": "tout suite"
+            "str": "<tout suite>"
         },
         {
             "start": 182.3,
             "end": 186.2,
-            "str": "mission accomplie c'est vous qu'on commande ici aux commandes"
+            "str": "<mission accomplie> c'est vous qu'on commande ici aux commandes"
         },
         {
             "start": 187.16,
             "end": 190.94,
-            "str": "excellent travail messieurs, nous sommes passés à deux doigts de la catastrophe"
+            "str": "<excellent travail messieurs>, nous sommes passés à deux doigts de la catastrophe"
         },
         {
             "start": 191.1,
             "end": 193.22,
-            "str": "c'est une catastrophe"
+            "str": "<c'est une catastrophe>"
         }
     ]
 }
