@@ -20,7 +20,6 @@ EntityBase {
     property var video: null
     property var ccButton: null
     property var scoreChange
-    property bool showAccents: false
     property string grey: "#eeeeee"
     property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "u": ["û"], "c": ["ç"]}
     property var accentList: ["a", "e", "i", "u", "c"]
@@ -85,13 +84,13 @@ EntityBase {
                             }
 
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
-                            if(showAccents) {
+                            if(accentsBox.showAccents) {
                                 if(event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
                                     var cursorIdx = textEdit.cursorPosition
                                     textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
 
-                                    showAccents = false
+                                    accentsBox.showAccents = false
                                     currentAccent = ""
                                     event.accepted = true
                                     return
@@ -101,7 +100,7 @@ EntityBase {
                             // check if the key press was an accent character and if so,
                             // start a timer to count how long it's held down for
                             currentAccent = ""
-                            showAccents = false
+                            accentsBox.showAccents = false
                             forEachAccent(function(chr, key, list) {
                                 if(key == event.key) {
                                     currentAccent = chr
@@ -146,9 +145,7 @@ EntityBase {
                         }
 
                         Keys.onTabPressed: {
-                            if (index + 1 < ans.length) {
-                                repeater.itemAt(index+1).txtObj[1].focus = true
-                            }
+                            repeater.itemAt((index+1)%ans.length).txtObj[1].focus = true
                         }
 
                         AccentsPopup {
@@ -156,6 +153,16 @@ EntityBase {
                             x: -width/2 + textEdit.cursorRectangle.x
                             anchors.bottom: parent.top
                             color: "#ffffff"
+                        }
+
+                        Timer {
+                            id: autoRepeatThreshold
+                            running: false
+                            repeat: false
+                            interval: 300
+                            onTriggered: {
+                                accentsBox.showAccents = true
+                            }
                         }
                     }
 
@@ -207,16 +214,6 @@ EntityBase {
         onTriggered: {
             dispCurrSub()
             skipBack()
-        }
-    }
-
-    Timer {
-        id: autoRepeatThreshold
-        running: false
-        repeat: false
-        interval: 300
-        onTriggered: {
-            showAccents = true
         }
     }
 

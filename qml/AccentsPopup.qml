@@ -2,6 +2,7 @@ import Felgo 3.0
 import QtQuick 2.5
 
 Rectangle {
+    property bool showAccents: false
     visible: showAccents
     color: grey
     width: accentText.width + dp(20)
