@@ -21,6 +21,7 @@ Item {
     property int prevIdx: -1
     property bool readyToDelete: false
     property bool pause: false
+    property var currSub
 
     EntityManager {
         id: entityManager
@@ -241,6 +242,7 @@ Item {
             video.pause()
             prevIdx = -1
             readyToDelete = true
+            currSub.repeater.itemAt(0).txtObj[1].focus = true
         } else {
             currIdx = getBin(currTime, startTime, endTime)
 
@@ -310,6 +312,7 @@ Item {
                     txtObj[1].width = txtObj[2].paintedWidth
                 }
 
+                currSub = entity
                 prevIdx = currIdx
                 readyToDelete = false
             } else if (readyToDelete) {

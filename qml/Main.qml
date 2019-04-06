@@ -4,6 +4,7 @@ import QtQuick 2.0
 
 GameWindow {
     id: app
+    shutdownAppWithEscapeKeyEnabled: false
 
     MenuScene {
         id: menuScene
