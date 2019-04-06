@@ -5,15 +5,6 @@ Item {
     id: shortcutHandler
 
     Shortcut {
-        sequence: 'Escape'
-        context: Qt.ApplicationShortcut
-        onActivated: {
-            showAccents = false
-            currentAccent = ""
-        }
-    }
-
-    Shortcut {
         sequence: 'Meta+A'
         context: Qt.ApplicationShortcut
         onActivated: {
