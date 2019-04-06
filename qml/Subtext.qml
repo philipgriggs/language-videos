@@ -48,6 +48,7 @@ EntityBase {
                 Item {
                     height: textEditText.paintedHeight
                     width: textEditText.width
+                    property string partialMatch: ""
 
                     ShortcutHandler{}
 
@@ -60,7 +61,7 @@ EntityBase {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         color: success ? "green" : fail ? "red" : "white"
-                        font.pointSize: text.font.pointSize
+                        font.pixelSize: text.font.pixelSize
                         placeholderText: blank[index]
                         visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
 
@@ -85,7 +86,7 @@ EntityBase {
 
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
                             if(accentsBox.showAccents) {
-                                if(event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
+                                if(currentAccent !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
                                     var cursorIdx = textEdit.cursorPosition
                                     textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
@@ -105,31 +106,24 @@ EntityBase {
                                 if(key == event.key) {
                                     currentAccent = chr
                                     autoRepeatThreshold.start()
+                                    return
                                 }
                             })
                         }
 
                         Keys.onReleased: {
                             autoRepeatThreshold.stop()
+                            parent.partialMatch = getPartialMatch(textEdit.text, ans[index])
+                            if(parent.partialMatch.length === ans[index].length) {
+                                success = true
+                                handleSuccess()
+                            }
                         }
 
                         Keys.onReturnPressed: {
                             if (success === false) {
                                 if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
-                                    incorrectLineAnim.duration = 200 * (maxTries - textEdit.textEditIncorrect)
-                                    success = true
-                                    rightAns[rightAnsIdx][index] = true
-                                    correct.play()
-                                    scoreChange()
-
-                                    nRightAns++
-                                    if(nRightAns === nAnsNeeded) {
-                                        focus = false
-                                        video.focus = true
-                                        //successRundown.start()
-                                    } else if (index + 1 < ans.length) {
-                                        repeater.itemAt(index+1).txtObj[1].focus = true
-                                    }
+                                    handleSuccess()
                                 } else {
                                     textEdit.text = ""
                                     incorrect.play()
@@ -162,6 +156,23 @@ EntityBase {
                             interval: 300
                             onTriggered: {
                                 accentsBox.showAccents = true
+                            }
+                        }
+
+                        function handleSuccess() {
+                            incorrectLineAnim.duration = 200 * (maxTries - textEdit.textEditIncorrect)
+                            success = true
+                            rightAns[rightAnsIdx][index] = true
+                            correct.play()
+                            scoreChange()
+
+                            nRightAns++
+                            if(nRightAns === nAnsNeeded) {
+                                focus = false
+                                video.focus = true
+                                //successRundown.start()
+                            } else if (index + 1 < ans.length) {
+                                repeater.itemAt(index+1).txtObj[1].focus = true
                             }
                         }
                     }
@@ -201,9 +212,28 @@ EntityBase {
                         text: ans[index]
                         horizontalAlignment: Text.AlignLeft
                     }
+
+                    AppText {
+                        id: textEditTextGreen
+                        anchors.left: textEditText.left
+                        width: textEditText.paintedWidth
+                        color: "green"
+                        text: parent.partialMatch
+                        horizontalAlignment: Text.AlignLeft
+                    }
                 }
             }
         }
+    }
+
+    function getPartialMatch(currAns, correctAns) {
+        var endIdx = 1
+        var match = ""
+        while (endIdx <= correctAns.length && currAns.substring(0, endIdx) === correctAns.substring(0, endIdx)) {
+            match = correctAns.substring(0, endIdx)
+            endIdx++
+        }
+        return match
     }
 
     Timer {
