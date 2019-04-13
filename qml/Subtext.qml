@@ -21,9 +21,9 @@ EntityBase {
     property var ccButton: null
     property var scoreChange
     property string grey: "#eeeeee"
-    property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "u": ["û"], "c": ["ç"]}
-    property var accentList: ["a", "e", "i", "u", "c"]
-    property var accentKeys: {"a": Qt.Key_A, "e": Qt.Key_E, "i": Qt.Key_I, "u": Qt.Key_U, "c": Qt.Key_C}
+    property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "o": ["ô"], "u": ["û"], "c": ["ç"]}
+    property var accentList: ["a", "e", "i", "o", "u", "c"]
+    property var accentKeys: {"a": Qt.Key_A, "e": Qt.Key_E, "i": Qt.Key_I, "o": Qt.Key_O, "u": Qt.Key_U, "c": Qt.Key_C}
     property string currentAccent: ""
 
     Row {
