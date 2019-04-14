@@ -229,8 +229,8 @@ EntityBase {
     function getPartialMatch(currAns, correctAns) {
         var endIdx = 1
         var match = ""
-        while (endIdx <= correctAns.length && currAns.substring(0, endIdx) === correctAns.substring(0, endIdx)) {
-            match = correctAns.substring(0, endIdx)
+        while (endIdx <= correctAns.length && currAns.substring(0, endIdx).toLowerCase() === correctAns.substring(0, endIdx).toLowerCase()) {
+            match = currAns.substring(0, endIdx)
             endIdx++
         }
         return match
