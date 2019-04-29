@@ -21,10 +21,74 @@ EntityBase {
     property var ccButton: null
     property var scoreChange
     property string grey: "#eeeeee"
-    property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "o": ["ô"], "u": ["û"], "c": ["ç"]}
-    property var accentList: ["a", "e", "i", "o", "u", "c"]
-    property var accentKeys: {"a": Qt.Key_A, "e": Qt.Key_E, "i": Qt.Key_I, "o": Qt.Key_O, "u": Qt.Key_U, "c": Qt.Key_C}
-    property string currentAccent: ""
+    property string language: "spanish"
+    property int currentAccent: -1
+    property var accents: {
+        "french": [
+                    {
+                        "chr": "a",
+                        "chars": ["à"],
+                        "key": Qt.Key_A,
+                    },
+                    {
+                        "chr": "e",
+                        "chars": ["é", "è", "ê"],
+                        "key": Qt.Key_E,
+                    },
+                    {
+                        "chr": "i",
+                        "chars": ["î"],
+                        "key": Qt.Key_I,
+                    },
+                    {
+                        "chr": "o",
+                        "chars": ["ô"],
+                        "key": Qt.Key_O,
+                    },
+                    {
+                        "chr": "u",
+                        "chars": ["û"],
+                        "key": Qt.Key_U
+                    },
+                    {
+                        "chr": "c",
+                        "chars": ["ç"],
+                        "key": Qt.Key_C,
+                    },
+                ],
+                "spanish": [
+                    {
+                        "chr": "a",
+                        "chars": ["á"],
+                        "key": Qt.Key_A,
+                    },
+                    {
+                        "chr": "e",
+                        "chars": ["é"],
+                        "key": Qt.Key_E,
+                    },
+                    {
+                        "chr": "i",
+                        "chars": ["í"],
+                        "key": Qt.Key_I,
+                    },
+                    {
+                        "chr": "o",
+                        "chars": ["ó"],
+                        "key": Qt.Key_O,
+                    },
+                    {
+                        "chr": "u",
+                        "chars": ["ú"],
+                        "key": Qt.Key_U
+                    },
+                    {
+                        "chr": "n",
+                        "chars": ["ñ"],
+                        "key": Qt.Key_N,
+                    },
+                ]
+    }
 
     Row {
         anchors.centerIn: parent
@@ -75,7 +139,7 @@ EntityBase {
                             // ignore repeats of accent keys: 'a', 'e', etc
                             if(event.isAutoRepeat) {
                                 var accept = false
-                                forEachAccent(function(chr, key, list) {
+                                forEachAccent(function(idx, chr, key, list) {
                                     if(event.key == key) {
                                         accept = true
                                     }
@@ -86,13 +150,14 @@ EntityBase {
 
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
                             if(accentsBox.showAccents) {
-                                if(currentAccent !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
+                                var currAccent = accents[language][currentAccent]
+                                if(currAccent.chr !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + currAccent.chars.length) {
                                     var cursorIdx = textEdit.cursorPosition
-                                    textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
+                                    textEdit.text = insertAtCursor(cursorIdx, textEdit.text, currAccent.chars[event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
 
                                     accentsBox.showAccents = false
-                                    currentAccent = ""
+                                    currentAccent = -1
                                     event.accepted = true
                                     return
                                 }
@@ -100,11 +165,11 @@ EntityBase {
 
                             // check if the key press was an accent character and if so,
                             // start a timer to count how long it's held down for
-                            currentAccent = ""
+                            currentAccent = -1
                             accentsBox.showAccents = false
-                            forEachAccent(function(chr, key, list) {
+                            forEachAccent(function(idx, chr, key, list) {
                                 if(key == event.key) {
-                                    currentAccent = chr
+                                    currentAccent = idx
                                     autoRepeatThreshold.start()
                                     return
                                 }
@@ -260,9 +325,11 @@ EntityBase {
     }
 
     function forEachAccent(fn) {
-        for(var i=0; i<accentList.length; i++) {
-            fn(accentList[i], accentKeys[accentList[i]], accents[accentList[i]])
-        }
+        var idx = 0
+        accents[language].forEach(function(item) {
+            fn(idx, item.chr, item.key, item.list)
+            idx++
+        })
     }
 
     // insert the character at the given cursor index

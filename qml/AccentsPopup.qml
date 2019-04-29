@@ -10,18 +10,18 @@ Rectangle {
     radius: dp(2)
     Grid {
         id: accentText
-        columns: currentAccent === "" ? 0 : accents[currentAccent].length
+        columns: currentAccent === -1 ? 0 : accents[language][currentAccent].chars.length
         anchors.horizontalCenter: parent.horizontalCenter
         columnSpacing: dp(10)
         Repeater {
-            model: currentAccent === "" ? [] : accents[currentAccent]
+            model: currentAccent === -1 ? [] : accents[language][currentAccent].chars
             AppText {
-                text: currentAccent === "" ? [] : accents[currentAccent][index]
+                text: currentAccent === "" ? [] : accents[language][currentAccent].chars[index]
                 font.pointSize: dp(15)
             }
         }
         Repeater {
-            model: currentAccent === "" ? [] : accents[currentAccent]
+            model: currentAccent === -1 ? [] : accents[language][currentAccent].chars
             AppText {
                 text: index + 1
                 color: "#777777"
