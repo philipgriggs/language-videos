@@ -21,10 +21,74 @@ EntityBase {
     property var ccButton: null
     property var scoreChange
     property string grey: "#eeeeee"
-    property var accents: {"a": ["à"], "e": ["é", "è", "ê"], "i": ["î"], "u": ["û"], "c": ["ç"]}
-    property var accentList: ["a", "e", "i", "u", "c"]
-    property var accentKeys: {"a": Qt.Key_A, "e": Qt.Key_E, "i": Qt.Key_I, "u": Qt.Key_U, "c": Qt.Key_C}
-    property string currentAccent: ""
+    property string language: "spanish"
+    property int currentAccent: -1
+    property var accents: {
+        "french": [
+                    {
+                        "chr": "a",
+                        "chars": ["à"],
+                        "key": Qt.Key_A,
+                    },
+                    {
+                        "chr": "e",
+                        "chars": ["é", "è", "ê"],
+                        "key": Qt.Key_E,
+                    },
+                    {
+                        "chr": "i",
+                        "chars": ["î"],
+                        "key": Qt.Key_I,
+                    },
+                    {
+                        "chr": "o",
+                        "chars": ["ô"],
+                        "key": Qt.Key_O,
+                    },
+                    {
+                        "chr": "u",
+                        "chars": ["û"],
+                        "key": Qt.Key_U
+                    },
+                    {
+                        "chr": "c",
+                        "chars": ["ç"],
+                        "key": Qt.Key_C,
+                    },
+                ],
+                "spanish": [
+                    {
+                        "chr": "a",
+                        "chars": ["á"],
+                        "key": Qt.Key_A,
+                    },
+                    {
+                        "chr": "e",
+                        "chars": ["é"],
+                        "key": Qt.Key_E,
+                    },
+                    {
+                        "chr": "i",
+                        "chars": ["í"],
+                        "key": Qt.Key_I,
+                    },
+                    {
+                        "chr": "o",
+                        "chars": ["ó"],
+                        "key": Qt.Key_O,
+                    },
+                    {
+                        "chr": "u",
+                        "chars": ["ú"],
+                        "key": Qt.Key_U
+                    },
+                    {
+                        "chr": "n",
+                        "chars": ["ñ"],
+                        "key": Qt.Key_N,
+                    },
+                ]
+    }
 
     Row {
         anchors.centerIn: parent
@@ -48,6 +112,7 @@ EntityBase {
                 Item {
                     height: textEditText.paintedHeight
                     width: textEditText.width
+                    property string partialMatch: ""
 
                     ShortcutHandler{}
 
@@ -60,7 +125,7 @@ EntityBase {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         color: success ? "green" : fail ? "red" : "white"
-                        font.pointSize: text.font.pointSize
+                        font.pixelSize: text.font.pixelSize
                         placeholderText: blank[index]
                         visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
 
@@ -74,7 +139,7 @@ EntityBase {
                             // ignore repeats of accent keys: 'a', 'e', etc
                             if(event.isAutoRepeat) {
                                 var accept = false
-                                forEachAccent(function(chr, key, list) {
+                                forEachAccent(function(idx, chr, key, list) {
                                     if(event.key == key) {
                                         accept = true
                                     }
@@ -85,13 +150,14 @@ EntityBase {
 
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
                             if(accentsBox.showAccents) {
-                                if(event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + accents[currentAccent].length) {
+                                var currAccent = accents[language][currentAccent]
+                                if(currAccent.chr !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + currAccent.chars.length) {
                                     var cursorIdx = textEdit.cursorPosition
-                                    textEdit.text = insertAtCursor(cursorIdx, textEdit.text, accents[currentAccent][event.key-Qt.Key_1], true)
+                                    textEdit.text = insertAtCursor(cursorIdx, textEdit.text, currAccent.chars[event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
 
                                     accentsBox.showAccents = false
-                                    currentAccent = ""
+                                    currentAccent = -1
                                     event.accepted = true
                                     return
                                 }
@@ -99,37 +165,30 @@ EntityBase {
 
                             // check if the key press was an accent character and if so,
                             // start a timer to count how long it's held down for
-                            currentAccent = ""
+                            currentAccent = -1
                             accentsBox.showAccents = false
-                            forEachAccent(function(chr, key, list) {
+                            forEachAccent(function(idx, chr, key, list) {
                                 if(key == event.key) {
-                                    currentAccent = chr
+                                    currentAccent = idx
                                     autoRepeatThreshold.start()
+                                    return
                                 }
                             })
                         }
 
                         Keys.onReleased: {
                             autoRepeatThreshold.stop()
+                            parent.partialMatch = getPartialMatch(textEdit.text, ans[index])
+                            if(parent.partialMatch.length === ans[index].length) {
+                                success = true
+                                handleSuccess()
+                            }
                         }
 
                         Keys.onReturnPressed: {
                             if (success === false) {
                                 if(textEdit.text.toLowerCase() === ans[index].toLowerCase()) {
-                                    incorrectLineAnim.duration = 200 * (maxTries - textEdit.textEditIncorrect)
-                                    success = true
-                                    rightAns[rightAnsIdx][index] = true
-                                    correct.play()
-                                    scoreChange()
-
-                                    nRightAns++
-                                    if(nRightAns === nAnsNeeded) {
-                                        focus = false
-                                        video.focus = true
-                                        //successRundown.start()
-                                    } else if (index + 1 < ans.length) {
-                                        repeater.itemAt(index+1).txtObj[1].focus = true
-                                    }
+                                    handleSuccess()
                                 } else {
                                     textEdit.text = ""
                                     incorrect.play()
@@ -162,6 +221,23 @@ EntityBase {
                             interval: 300
                             onTriggered: {
                                 accentsBox.showAccents = true
+                            }
+                        }
+
+                        function handleSuccess() {
+                            incorrectLineAnim.duration = 200 * (maxTries - textEdit.textEditIncorrect)
+                            success = true
+                            rightAns[rightAnsIdx][index] = true
+                            correct.play()
+                            scoreChange()
+
+                            nRightAns++
+                            if(nRightAns === nAnsNeeded) {
+                                focus = false
+                                video.focus = true
+                                //successRundown.start()
+                            } else if (index + 1 < ans.length) {
+                                repeater.itemAt(index+1).txtObj[1].focus = true
                             }
                         }
                     }
@@ -201,9 +277,28 @@ EntityBase {
                         text: ans[index]
                         horizontalAlignment: Text.AlignLeft
                     }
+
+                    AppText {
+                        id: textEditTextGreen
+                        anchors.left: textEditText.left
+                        width: textEditText.paintedWidth
+                        color: "green"
+                        text: parent.partialMatch
+                        horizontalAlignment: Text.AlignLeft
+                    }
                 }
             }
         }
+    }
+
+    function getPartialMatch(currAns, correctAns) {
+        var endIdx = 1
+        var match = ""
+        while (endIdx <= correctAns.length && currAns.substring(0, endIdx).toLowerCase() === correctAns.substring(0, endIdx).toLowerCase()) {
+            match = currAns.substring(0, endIdx)
+            endIdx++
+        }
+        return match
     }
 
     Timer {
@@ -230,9 +325,11 @@ EntityBase {
     }
 
     function forEachAccent(fn) {
-        for(var i=0; i<accentList.length; i++) {
-            fn(accentList[i], accentKeys[accentList[i]], accents[accentList[i]])
-        }
+        var idx = 0
+        accents[language].forEach(function(item) {
+            fn(idx, item.chr, item.key, item.list)
+            idx++
+        })
     }
 
     // insert the character at the given cursor index

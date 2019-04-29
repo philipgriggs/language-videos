@@ -5,5 +5,8 @@
 *.m4v
 *.mp4
 
+# gimp files
+*.xcf
+
 # IDE files
 *.pro.user
