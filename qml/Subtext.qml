@@ -21,7 +21,7 @@ EntityBase {
     property var ccButton: null
     property var scoreChange
     property string grey: "#eeeeee"
-    property string language: "spanish"
+    property string language: "french"
     property int currentAccent: -1
     property var accents: {
         "french": [
@@ -113,9 +113,11 @@ EntityBase {
                     height: textEditText.paintedHeight
                     width: textEditText.width
                     property string partialMatch: ""
+                    property string partialMatchFmt: ""
 
                     ShortcutHandler{}
 
+                    // text edit input box, don't actually display the text because we format it first and display it later
                     AppTextEdit {
                         id: textEdit
                         property bool success: false
@@ -124,7 +126,7 @@ EntityBase {
                         width: textEditText.paintedWidth
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        color: success ? "green" : fail ? "red" : "white"
+                        color: "#00000000"
                         font.pixelSize: text.font.pixelSize
                         placeholderText: blank[index]
                         visible: rightAns[rightAnsIdx][index] === false && incorrectTries[rightAnsIdx][index] < maxTries
@@ -151,16 +153,15 @@ EntityBase {
                             // if the accent pop up is showing, then intercept the number keys and replace the text with the accent
                             if(accentsBox.showAccents) {
                                 var currAccent = accents[language][currentAccent]
-                                if(currAccent.chr !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + currAccent.chars.length) {
+                                if(currAccent != null && currAccent.chr !== "" && event.key >= Qt.Key_1 && event.key <= Qt.Key_1 + currAccent.chars.length) {
                                     var cursorIdx = textEdit.cursorPosition
                                     textEdit.text = insertAtCursor(cursorIdx, textEdit.text, currAccent.chars[event.key-Qt.Key_1], true)
                                     textEdit.cursorPosition = cursorIdx
-
-                                    accentsBox.showAccents = false
-                                    currentAccent = -1
                                     event.accepted = true
-                                    return
                                 }
+                                accentsBox.showAccents = false
+                                currentAccent = -1
+                                return
                             }
 
                             // check if the key press was an accent character and if so,
@@ -178,7 +179,9 @@ EntityBase {
 
                         Keys.onReleased: {
                             autoRepeatThreshold.stop()
-                            parent.partialMatch = getPartialMatch(textEdit.text, ans[index])
+                            var matches = getPartialMatch(textEdit.text, ans[index])
+                            parent.partialMatch = matches[0]
+                            parent.partialMatchFmt = matches[1]
                             if(parent.partialMatch.length === ans[index].length) {
                                 success = true
                                 handleSuccess()
@@ -269,6 +272,7 @@ EntityBase {
                         Behavior on opacity {NumberAnimation {duration: 300}}
                     }
 
+                    // the correct answer, show if we failed
                     AppText {
                         id: textEditText
                         anchors.left: parent.left
@@ -276,15 +280,18 @@ EntityBase {
                         color: (rightAns[rightAnsIdx][index] === true || incorrectTries[rightAnsIdx][index] >= maxTries || textEdit.fail === true) ? "#bbbbbb" : "#00dddddd"
                         text: ans[index]
                         horizontalAlignment: Text.AlignLeft
+                        font.pixelSize: text.font.pixelSize
                     }
 
+                    // the display of the partial answer, same as the AppTextEdit but with formatting
                     AppText {
                         id: textEditTextGreen
                         anchors.left: textEditText.left
-                        width: textEditText.paintedWidth
-                        color: "green"
-                        text: parent.partialMatch
+                        width: textEdit.paintedWidth * 1.05
+                        text: parent.partialMatchFmt
+                        color: "white"
                         horizontalAlignment: Text.AlignLeft
+                        font.pixelSize: text.font.pixelSize
                     }
                 }
             }
@@ -292,13 +299,58 @@ EntityBase {
     }
 
     function getPartialMatch(currAns, correctAns) {
-        var endIdx = 1
         var match = ""
-        while (endIdx <= correctAns.length && currAns.substring(0, endIdx).toLowerCase() === correctAns.substring(0, endIdx).toLowerCase()) {
-            match = currAns.substring(0, endIdx)
-            endIdx++
+        var matchFmt = ""
+        var partial = false
+        var accent = false
+        var repeat = false
+        var correctCursor = 0
+        var fontColor = "green"
+        for (var currCursor = 0; currCursor < currAns.length; currCursor++) {
+            var currChar = currAns.substring(currCursor, currCursor+1).toLowerCase()
+            var correctChar = correctAns.substring(correctCursor, correctCursor+1).toLowerCase()
+            if (currChar === correctChar) {
+                if (!partial) {
+                    match += currAns.substring(currCursor, currCursor+1)
+                } else {
+                    fontColor = "#8bc48b"
+                }
+                matchFmt += "<font color=\""+ fontColor + "\">" + currAns.substring(currCursor, currCursor+1) + "</font>"
+                correctCursor++
+                partial = false
+                continue
+            }
+            forEachAccent(function(idx, chr, key, list) {
+                if (chr === currChar) {
+                    list.forEach(function(l) {
+                        if (l === correctChar) {
+                            matchFmt += "<font color=\"orange\">" + currAns.substring(currCursor, currCursor+1) + "</font>"
+                            correctCursor++
+                            accent = true
+                        }
+                    })
+                }
+            })
+            partial = true
+            if (partial && !accent) {
+                for (; correctCursor < correctAns.length; correctCursor++) {
+                    if (correctAns.substring(correctCursor, correctCursor+1) === " ") {
+                        correctCursor++
+                        if (currChar !== " ") {
+                            currCursor--
+                            repeat = true
+                        }
+                        break
+                    }
+                }
+            }
+            if (!accent && !repeat) {
+                matchFmt += currChar
+            }
+            accent = false
+            repeat = false
         }
-        return match
+        return [match, matchFmt]
     }
 
     Timer {
@@ -327,7 +379,7 @@ EntityBase {
     function forEachAccent(fn) {
         var idx = 0
         accents[language].forEach(function(item) {
-            fn(idx, item.chr, item.key, item.list)
+            fn(idx, item.chr, item.key, item.chars)
             idx++
         })
     }
