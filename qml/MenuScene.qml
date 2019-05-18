@@ -7,14 +7,16 @@ Scene {
     id: menuScene
 
     signal sceneChange(string scene)
-    signal loadVideo(string movFileName, string subsFileName)
+    signal loadVideo(string movFileName, string subsFileName, bool widescreen)
 
-    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Vice Versa', 'Vice Versa (2)']
-    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4', 'Vice Versa 2.mp4']
-    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', 'ViceVersa.json', 'ViceVersa2.json']
-    property var thumbnailFiles: ['LaLaLand.png', 'BelleEtLaBete.png', 'JohnnyEnglish.png', 'ViceVersa.png', 'ViceVersa2.png']
-    property var thumbnailFgFiles: ['LaLaLandFg.png', 'BelleEtLaBeteFg.png', 'JohnnyEnglishFg.png', 'ViceVersaFg.png', 'ViceVersa2Fg.png']
-    property var zoomCentre: [[1/2.2, 1/2.5], [1/2, 1/2], [1/2.5, 1/1.85], [1/2, 1/1.85], [1/2, 1/1.85]]
+    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Johnny English', 'Vice Versa', 'Vice Versa (2)', 'Là-haut', 'Le Bossu de Notre Dame', 'Buscando a Nemo', 'Harry Potter', 'Harry Potter (2)', 'Monsters Inc']
+    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4', 'Vice Versa 2.mp4', 'Up.mp4', 'Le Bossu de Notre Dame 2.mp4', 'Finding Nemo.mp4', 'Harry Potter.mp4', 'Harry Potter 2.mp4', 'Monsters Inc.mp4']
+    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', 'JohnnyEnglish.json', 'ViceVersa.json', 'ViceVersa2.json', 'Up.json', 'LeBossuDeNotreDame2.json', 'FindingNemo.json', 'HarryPotter.json', 'HarryPotter2.json', 'MonstersInc.json']
+    property var thumbnailFiles: ['LaLaLandSprite/12.jpg', 'BelleEtLaBeteSprite/13.jpg', 'JohnnyEnglishSprite/12.jpg', 'JohnnyEnglishSprite2/12.jpg', 'ViceVersaSprite/12.jpg', 'ViceVersaSprite2/10.jpg', 'UpSprite/12.jpg', 'HunchbackOfNotreDameSprite/14.jpg', 'FindingNemoSprite/12.jpg', 'HarryPotterSprite/12.jpg', 'HarryPotterSprite2/12.jpg', 'MonstersIncSprite/12.jpg']
+    property var thumbnailFgFiles: ['', '', '', '', '', '', 'UpFg.png', '', 'FindingNemoFg.png', '', '', '']
+    property var thumbnailSpriteFiles: ['LaLaLandSprite', 'BelleEtLaBeteSprite', 'JohnnyEnglishSprite', 'JohnnyEnglishSprite2', 'ViceVersaSprite', 'ViceVersaSprite2', 'UpSprite', 'HunchbackOfNotreDameSprite', 'FindingNemoSprite', 'HarryPotterSprite', 'HarryPotterSprite2', 'MonstersIncSprite']
+    property var thumbnailSpriteFrames: [12, 13, 12, 12, 12, 10, 12, 14, 12, 12, 12, 12]
+    property var widescreen: [true, true, true, true, false, false, false, false, false, true, true, false]
 
     function alignMiddle() {
         listView.positionViewAtIndex(listView.model * 0.5 - (listView.numberOfItems > 2 ? 1 : 0), ListView.SnapPosition)
@@ -43,7 +45,7 @@ Scene {
         }
 
         Rectangle {
-            id: timePicker
+            id: moviePicker
             anchors.centerIn: parent
             width: parent.width
             height: parent.height / 2
@@ -55,9 +57,9 @@ Scene {
                 width: parent.width * 2
                 y: 0
                 height: parent.height
-                property int delegateWidth: width / timePicker.numberOfItems
+                property int delegateWidth: width / moviePicker.numberOfItems
                 orientation: Qt.Horizontal
-                model: movFiles.length * 10
+                model: movFiles.length * 1
                 spacing: 0
                 highlightRangeMode: ListView.StrictlyEnforceRange
                 preferredHighlightBegin: (width - delegateWidth) / 2
@@ -67,8 +69,10 @@ Scene {
                             width: listView.delegateWidth < parent.height ? listView.delegateWidth : parent.height
                             height: listView.delegateWidth < parent.height ? listView.delegateWidth : parent.height
                             ThumbnailButton {
-                                filename: "../assets/thumbnails/" + menuScene.thumbnailFiles[index % movFiles.length]
-                                fgFilename: "../assets/thumbnails/" + menuScene.thumbnailFgFiles[index % movFiles.length]
+                                filename: menuScene.thumbnailFiles[index % movFiles.length]
+                                fgFilename: menuScene.thumbnailFgFiles[index % movFiles.length]
+                                spriteFilename: menuScene.thumbnailSpriteFiles[index % movFiles.length]
+                                spriteFrames: menuScene.thumbnailSpriteFrames[index % movFiles.length]
                                 anchors.fill: parent
                                 text: menuScene.dispName[index % movFiles.length]
                                 zoomFactor: {
@@ -77,11 +81,11 @@ Scene {
                                     if (posn > 0.95 && posn < 1.05) return 1
                                     return 0
                                 }
-                                zoomCenter: [menuScene.zoomCentre[index % movFiles.length][0]*contentItem.width, menuScene.zoomCentre[index % movFiles.length][1]*contentItem.height]
+                                zoomCenter: [0.5*contentItem.width, 0.5*contentItem.height]
                                 visible: (contentItem.x - contentItem.ListView.view.contentX + contentItem.width * 0.5) / contentItem.ListView.view.width * 2 > 0
                                 onImgClickSignal: {
                                     if(index === listView.currentIndex) {
-                                        loadVideo(movFiles[index % movFiles.length], subsFiles[index % movFiles.length])
+                                        loadVideo(movFiles[index % movFiles.length], subsFiles[index % movFiles.length], widescreen[index % movFiles.length])
                                     } else {
                                         for(var i=index-listView.currentIndex; i>0; i--) {
                                             listView.incrementCurrentIndex()

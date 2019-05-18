@@ -1,0 +1,224 @@
+{
+    "data": [
+        {
+            "start": 18.36,
+            "end": 19.96,
+            "str": "El techo <no es real>."
+        },
+        {
+            "start": 20.36,
+            "end": 22.92,
+            "str": "Es un hechiza para que parezca un cielo <de fuera>."
+        },
+        {
+            "start": 23.56,
+            "end": 26.56,
+            "str": "<Lo leí> en la historia de Hogwarts."
+        },
+        {
+            "start": 39.52,
+            "end": 41.72,
+            "str": "En ella movilidad <espera aquí>."
+        },
+        {
+            "start": 43.84,
+            "end": 49.48,
+            "str": "Ahora, antes de comenzar, el profesor Dumbledore <quiere dedicaros unas palabras>."
+        },
+        {
+            "start": 50.32,
+            "end": 54.24,
+            "str": "A denunciarlos algunas normas de <principio de curso>."
+        },
+        {
+            "start": 55.28,
+            "end": 57.32,
+            "str": "<Los nuevos debéis saber>"
+        },
+        {
+            "start": 57.96,
+            "end": 62.88,
+            "str": "que el bosque oscuro está terminantemente <prohibido para todos los alumnos>."
+        },
+        {
+            "start": 64.12,
+            "end": 69.4,
+            "str": "Asimismo, nuestro cerrador, el Señor Filch <me ha pedido que os recuerde>"
+        },
+        {
+            "start": 69.44,
+            "end": 74.2,
+            "str": "que el pasillo del tercer piso, el de lado derecho <no está permitido>"
+        },
+        {
+            "start": 74.8,
+            "end": 78.72,
+            "str": "para todo aquel que no desea <la más doloroso de las muertes>."
+        },
+        {
+            "start": 80.28,
+            "end": 81.92,
+            "str": "Gracias."
+        },
+        {
+            "start": 83.84,
+            "end": 88.24,
+            "str": "<Cuando diga vuestro nombre> vendréis hasta aquí."
+        },
+        {
+            "start": 88.44,
+            "end": 91.56,
+            "str": "<Yo os colocar> el sombreroso sobre la cabeza"
+        },
+        {
+            "start": 92.2,
+            "end": 94.56,
+            "str": "<y seréis seleccionadas> para una casa."
+        },
+        {
+            "start": 95.68,
+            "end": 97.75999999999999,
+            "str": "Hermione Granger."
+        },
+        {
+            "start": 100.52000000000001,
+            "end": 103.4,
+            "str": "O no, bueno, <tranquila>."
+        },
+        {
+            "start": 104.0,
+            "end": 106.28,
+            "str": "Esta tía esta loca <te lo digo yo>."
+        },
+        {
+            "start": 111.32,
+            "end": 114.32,
+            "str": "Ah, veamos."
+        },
+        {
+            "start": 115.4,
+            "end": 116.52000000000001,
+            "str": "Bien!"
+        },
+        {
+            "start": 116.56,
+            "end": 119.56,
+            "str": "<De acuerdo>, Gryffindor!"
+        },
+        {
+            "start": 139.32,
+            "end": 142.72,
+            "str": "<Todos los magos> que se han echado a perder fueron de Slytherin."
+        },
+        {
+            "start": 153.64,
+            "end": 155.8,
+            "str": "Harry, <qué pasa>?"
+        },
+        {
+            "start": 156.0,
+            "end": 159.0,
+            "str": "Nada, estoy bien."
+        },
+        {
+            "start": 159.07999999999998,
+            "end": 162.2,
+            "str": "Pensemos... <ya sé>!"
+        },
+        {
+            "start": 162.44,
+            "end": 163.64,
+            "str": "Hufflepuff!"
+        },
+        {
+            "start": 183.36,
+            "end": 185.12,
+            "str": "<Aquí otro> Weasley."
+        },
+        {
+            "start": 185.12,
+            "end": 188.36,
+            "str": "<Tengo muy claro lo que voy a hacer contigo>."
+        },
+        {
+            "start": 188.6,
+            "end": 190.28,
+            "str": "Gryffindor!"
+        },
+        {
+            "start": 217.24,
+            "end": 219.8,
+            "str": "Muy difícil, difícil..."
+        },
+        {
+            "start": 219.8,
+            "end": 221.9,
+            "str": "<Lleno de valor>, lo veo."
+        },
+        {
+            "start": 221.92000000000002,
+            "end": 224.4,
+            "str": "<Tampoco la mente es mala>."
+        },
+        {
+            "start": 224.4,
+            "end": 231.52,
+            "str": "Hay talento, o sí, y <muchas ganas de probarse asimismo>."
+        },
+        {
+            "start": 231.52,
+            "end": 235.24,
+            "str": "<Veamos dónde te pongo>?"
+        },
+        {
+            "start": 237.2,
+            "end": 239.4,
+            "str": "Syltherin no eh?"
+        },
+        {
+            "start": 239.4,
+            "end": 240.9,
+            "str": "<Estás seguro>?"
+        },
+        {
+            "start": 240.9,
+            "end": 242.9,
+            "str": "<Podrías ser muy grande sabes>?"
+        },
+        {
+            "start": 242.9,
+            "end": 245.7,
+            "str": "<Lo tienes todo en tu cabeza> y"
+        },
+        {
+            "start": 245.7,
+            "end": 248.9,
+            "str": "Slytherin <te ayudarían tu camino> en la grandeza."
+        },
+        {
+            "start": 248.9,
+            "end": 251.84,
+            "str": "De eso <no cabe la menor duda>."
+        },
+        {
+            "start": 251.84,
+            "end": 253.04,
+            "str": "No?"
+        },
+        {
+            "start": 253.56,
+            "end": 261.36,
+            "str": "Bueno, si lo tienes tan claro, <mejor que estés en>... Gryffindor!"
+        },
+        {
+            "start": 286.12,
+            "end": 288.15999999999997,
+            "str": "<Atención>, por favor."
+        },
+        {
+            "start": 291.2,
+            "end": 293.84000000000003,
+            "str": "<Que comience la fiesta>."
+        }
+    ]
+}

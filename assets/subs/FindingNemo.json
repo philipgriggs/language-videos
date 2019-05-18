@@ -1,0 +1,324 @@
+{
+    "data": [
+        {
+            "start": 5.96,
+            "end": 8.24,
+            "str": "Primer día de <escuela>!"
+        },
+        {
+            "start": 8.24,
+            "end": 9.64,
+            "str": "<Arriba>!"
+        },
+        {
+            "start": 9.7,
+            "end": 11.3,
+            "str": "<Despierta>! Primer día de escuela!"
+        },
+        {
+            "start": 11.32,
+            "end": 12.82,
+            "str": "<No quiero ir al escuela>"
+        },
+        {
+            "start": 12.82,
+            "end": 13.86,
+            "str": "<Cinco minutos>"
+        },
+        {
+            "start": 13.86,
+            "end": 14.98,
+            "str": "Tú no, yo papa."
+        },
+        {
+            "start": 15.72,
+            "end": 16.6,
+            "str": "Anda, anda"
+        },
+        {
+            "start": 16.6,
+            "end": 17.74,
+            "str": "ya es hora, ya es hora"
+        },
+        {
+            "start": 17.74,
+            "end": 19.52,
+            "str": "vamos al escuela"
+        },
+        {
+            "start": 19.52,
+            "end": 21.1,
+            "str": "vamanos, vamanos, vamanos"
+        },
+        {
+            "start": 24.48,
+            "end": 26.38,
+            "str": "Nemo, <no te muevas>"
+        },
+        {
+            "start": 26.38,
+            "end": 28.66,
+            "str": "no puedes tú solo, <yo te ayudo>"
+        },
+        {
+            "start": 29.6,
+            "end": 30.94,
+            "str": "Ya, qué te <rompiste>?"
+        },
+        {
+            "start": 30.95,
+            "end": 31.95,
+            "str": "<Tienes fractura>?"
+        },
+        {
+            "start": 31.95,
+            "end": 34.12,
+            "str": "no <siempre> se siente por los fluidos en el área"
+        },
+        {
+            "start": 34.12,
+            "end": 35.34,
+            "str": "<Sientes> algún fluido?"
+        },
+        {
+            "start": 35.34,
+            "end": 36.43,
+            "str": "<Tienes náuseas>?"
+        },
+        {
+            "start": 36.43,
+            "end": 37.38,
+            "str": "<Dime cuántas> franjas tengo?"
+        },
+        {
+            "start": 37.38,
+            "end": 38.08,
+            "str": "estoy bien"
+        },
+        {
+            "start": 38.08,
+            "end": 39.56,
+            "str": "<Contesta francamente>!"
+        },
+        {
+            "start": 39.56,
+            "end": 40.36,
+            "str": "Tres"
+        },
+        {
+            "start": 40.48,
+            "end": 42.02,
+            "str": "ves, <algo muy grave tienes>"
+        },
+        {
+            "start": 42.02,
+            "end": 45.12,
+            "str": "tengo una, dos, tres... <tan pocas>?"
+        },
+        {
+            "start": 45.36,
+            "end": 46.46,
+            "str": "<no es nada>"
+        },
+        {
+            "start": 46.46,
+            "end": 47.84,
+            "str": "y <tu aleta feliz>?"
+        },
+        {
+            "start": 48.98,
+            "end": 49.96,
+            "str": "<a ver>"
+        },
+        {
+            "start": 51.7,
+            "end": 53.32,
+            "str": "<Seguro que> quieres ir a escuela este año?"
+        },
+        {
+            "start": 53.42,
+            "end": 54.84,
+            "str": "<no hay problema> si no quieres"
+        },
+        {
+            "start": 54.84,
+            "end": 56.44,
+            "str": "<qué te esperes> cinco, seis años?"
+        },
+        {
+            "start": 56.44,
+            "end": 58.7,
+            "str": "<anda>, ya vamos a la escuela"
+        },
+        {
+            "start": 59.02,
+            "end": 60.6,
+            "str": "<primero> cepíllate"
+        },
+        {
+            "start": 60.86,
+            "end": 63.12,
+            "str": "quieres que un anémona <te ataque>?"
+        },
+        {
+            "start": 63.82,
+            "end": 64.82,
+            "str": "Cepíllate!"
+        },
+        {
+            "start": 65.48,
+            "end": 66.6,
+            "str": "listo, listo."
+        },
+        {
+            "start": 66.6,
+            "end": 67.54,
+            "str": "<te faltó una parte>"
+        },
+        {
+            "start": 67.54,
+            "end": 68.36,
+            "str": "Dónde? Allí."
+        },
+        {
+            "start": 69.52,
+            "end": 71.3,
+            "str": "Acá, y aquí, y aquí, por allá."
+        },
+        {
+            "start": 80.84,
+            "end": 82.32,
+            "str": "<Que gran emoción>!"
+        },
+        {
+            "start": 82.32,
+            "end": 83.44,
+            "str": "Primer día de escuela."
+        },
+        {
+            "start": 83.44,
+            "end": 84.52,
+            "str": "<Que gusto>!"
+        },
+        {
+            "start": 84.52,
+            "end": 86.03999999999999,
+            "str": "<Listos para la educación>!"
+        },
+        {
+            "start": 86.03999999999999,
+            "end": 88.42,
+            "str": "Qué es lo que <no debes olvidar> respecto al océano?"
+        },
+        {
+            "start": 88.42,
+            "end": 91.2,
+            "str": "<Que hay peligro>… Que buen pez"
+        },
+        {
+            "start": 91.2,
+            "end": 93.53999999999999,
+            "str": "primero, <hay que estar seguros> de que el lugar es seguro"
+        },
+        {
+            "start": 93.53999999999999,
+            "end": 96.1,
+            "str": "<adelante> y para atrás"
+        },
+        {
+            "start": 96.11,
+            "end": 98.1,
+            "str": "y adelante y para atrás"
+        },
+        {
+            "start": 98.16,
+            "end": 99.74000000000001,
+            "str": "y <una vez más>"
+        },
+        {
+            "start": 101.34,
+            "end": 103.4,
+            "str": "a veces, quiero hacerlo <cuatros veces>"
+        },
+        {
+            "start": 103.88,
+            "end": 105.52000000000001,
+            "str": "ya voy <hijo mío>"
+        },
+        {
+            "start": 108.5,
+            "end": 111.32,
+            "str": "Papa, <tal vez> a la escuela veo un tiburón?"
+        },
+        {
+            "start": 111.32,
+            "end": 112.64,
+            "str": "<lo dudo mucho>"
+        },
+        {
+            "start": 112.64,
+            "end": 113.78,
+            "str": "<Has visto> tiburón?"
+        },
+        {
+            "start": 113.9,
+            "end": 115.8,
+            "str": "no, y <no lo planeo>"
+        },
+        {
+            "start": 115.8,
+            "end": 116.96000000000001,
+            "str": "Qué? Tienen <las tortugas>?"
+        },
+        {
+            "start": 116.96000000000001,
+            "end": 118.18,
+            "str": "Las tortugas?"
+        },
+        {
+            "start": 118.42,
+            "end": 119.3,
+            "str": "No lo sé."
+        },
+        {
+            "start": 119.3,
+            "end": 122.28,
+            "str": "Carlos plankton, <el vecino>, dice que las tortugas,"
+        },
+        {
+            "start": 122.28,
+            "end": 125.84,
+            "str": "dice que las tortugas marinas viven como cien años"
+        },
+        {
+            "start": 125.94,
+            "end": 128.22,
+            "str": "pués, si veo uno, <le preguntaré>"
+        },
+        {
+            "start": 128.22,
+            "end": 130.849,
+            "str": "<Después de hablar> con el tiburón, sí?"
+        },
+        {
+            "start": 130.849,
+            "end": 133.04,
+            "str": "Alto, alto, <precaución>!"
+        },
+        {
+            "start": 133.68,
+            "end": 136.18,
+            "str": "de mi <aleta>"
+        },
+        {
+            "start": 136.18,
+            "end": 139.52,
+            "str": "Papa! No te vayas a poner <histérico> como en el zoológico."
+        },
+        {
+            "start": 139.52,
+            "end": 141.88,
+            "str": "oye, ese caracol se veía <agresivo>"
+        }
+    ]
+}
