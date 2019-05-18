@@ -7,7 +7,7 @@ Scene {
     id: menuScene
 
     signal sceneChange(string scene)
-    signal loadVideo(string movFileName, string subsFileName, bool widescreen)
+    signal loadVideo(string movFileName, string subsFileName, string language, bool widescreen)
 
     property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Johnny English', 'Vice Versa', 'Vice Versa (2)', 'Là-haut', 'Le Bossu de Notre Dame', 'Buscando a Nemo', 'Harry Potter', 'Harry Potter (2)', 'Monsters Inc']
     property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4', 'Vice Versa 2.mp4', 'Up.mp4', 'Le Bossu de Notre Dame 2.mp4', 'Finding Nemo.mp4', 'Harry Potter.mp4', 'Harry Potter 2.mp4', 'Monsters Inc.mp4']
@@ -16,6 +16,7 @@ Scene {
     property var thumbnailFgFiles: ['', '', '', '', '', '', 'UpFg.png', '', 'FindingNemoFg.png', '', '', '']
     property var thumbnailSpriteFiles: ['LaLaLandSprite', 'BelleEtLaBeteSprite', 'JohnnyEnglishSprite', 'JohnnyEnglishSprite2', 'ViceVersaSprite', 'ViceVersaSprite2', 'UpSprite', 'HunchbackOfNotreDameSprite', 'FindingNemoSprite', 'HarryPotterSprite', 'HarryPotterSprite2', 'MonstersIncSprite']
     property var thumbnailSpriteFrames: [12, 13, 12, 12, 12, 10, 12, 14, 12, 12, 12, 12]
+    property var language: ['french', 'french', 'french', 'french', 'french', 'french', 'french', 'french', 'spanish', 'spanish', 'spanish', 'spanish']
     property var widescreen: [true, true, true, true, false, false, false, false, false, true, true, false]
 
     function alignMiddle() {
@@ -85,7 +86,7 @@ Scene {
                                 visible: (contentItem.x - contentItem.ListView.view.contentX + contentItem.width * 0.5) / contentItem.ListView.view.width * 2 > 0
                                 onImgClickSignal: {
                                     if(index === listView.currentIndex) {
-                                        loadVideo(movFiles[index % movFiles.length], subsFiles[index % movFiles.length], widescreen[index % movFiles.length])
+                                        loadVideo(movFiles[index % movFiles.length], subsFiles[index % movFiles.length], menuScene.language[index % movFiles.length], widescreen[index % movFiles.length])
                                     } else {
                                         for(var i=index-listView.currentIndex; i>0; i--) {
                                             listView.incrementCurrentIndex()

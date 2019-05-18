@@ -14,7 +14,7 @@ GameWindow {
         }
         onLoadVideo: {
             app.state = "player"
-            playerScene.loadVideo(movFileName, subsFileName, widescreen)
+            playerScene.loadVideo(movFileName, subsFileName, language, widescreen)
         }
     }
 

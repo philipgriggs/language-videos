@@ -11,9 +11,10 @@ Scene {
     opacity: 0
     Behavior on opacity {NumberAnimation {duration: 250}}
 
-    function loadVideo(movFileName, subsFileName, widescreen) {
+    function loadVideo(movFileName, subsFileName, language, widescreen) {
         loader.item.movFileName = "../assets/mov/" + movFileName
         loader.item.parseJson("../assets/subs/" + subsFileName)
+        loader.item.language = language
         loader.item.widescreen = widescreen
         loader.item.video.focus = true
     }

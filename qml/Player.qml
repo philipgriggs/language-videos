@@ -7,6 +7,7 @@ Item {
     id: player
 
     property string movFileName: ""
+    property string language
     property var backSignal
     property alias video: video
     property var startTime: []
@@ -299,6 +300,7 @@ Item {
                     repeats: currStr.length,
                     entityId: "SubText",
                     video: video,
+                    language: language,
                     parentAns: rightAns,
                     ccButton: nav.ccButton,
                     scoreChange: calcScore,
