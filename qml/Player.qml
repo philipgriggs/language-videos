@@ -1,7 +1,7 @@
 import VPlayApps 1.0
 import VPlay 2.0
 import QtQuick 2.5
-import QtMultimedia 5.0
+import QtMultimedia 5.9
 
 Item {
     id: player
@@ -21,6 +21,7 @@ Item {
     property int prevIdx: -1
     property bool readyToDelete: false
     property bool pause: false
+    property bool widescreen
     property var currSub
 
     EntityManager {
@@ -39,7 +40,11 @@ Item {
 
         Video {
             id: video
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            fillMode: Image.PreserveAspectFit
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.verticalCenterOffset:widescreen ? 0 : -0.5*(height-width*1080/1920)
             source: movFileName
             autoPlay: false
 

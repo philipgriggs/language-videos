@@ -7,6 +7,8 @@ Item {
 
     property string filename
     property string fgFilename
+    property string spriteFilename
+    property int spriteFrames
     property string text
     property real zoomFactor
     property real zoomMax: 0.05
@@ -15,6 +17,14 @@ Item {
     property alias clipper: clipper
     property alias reflection: reflection
     signal imgClickSignal
+
+    onZoomFactorChanged: {
+        if (zoomFactor === 1) {
+            customSprite.frameIdx = spriteFrames - 1
+        } else if (zoomFactor === 0) {
+            customSprite.frameIdx = 0
+        }
+    }
 
     Item {
         id: clipper
@@ -36,7 +46,7 @@ Item {
 
         Image {
             id: thumbnail
-            source: filename
+            source: "../assets/thumbnails/" + filename
             height: parent.height * (1 + zoomFactor*zoomMax)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
@@ -49,9 +59,27 @@ Item {
             }
         }
 
+        CustomSprite {
+            id: customSprite
+            visible: spriteFilename != ''
+            anchors.centerIn: parent
+            height: parent.height * (1 + zoomFactor*zoomMax)
+            width: height
+            imgSrc: "../assets/thumbnails/" + spriteFilename
+            frames: spriteFrames
+            spriteDuration: 500
+            easingType: Easing.Linear
+            Behavior on height {
+                NumberAnimation {
+                    duration: 500
+                    easing.type: Easing.Linear
+                }
+            }
+        }
+
         Image {
             id: thumbnailFg
-            source: fgFilename
+            source: "../assets/thumbnails/" + fgFilename
             height: parent.height * (1 + zoomFactor*zoomMaxFg)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent
@@ -144,7 +172,7 @@ Item {
 
         Image {
             id: thumbnailReflection
-            source: filename
+            source: "../assets/thumbnails/" + filename
             height: parent.height * (1 + zoomFactor*zoomMax)
             fillMode: Image.PreserveAspectFit
             anchors.centerIn: parent

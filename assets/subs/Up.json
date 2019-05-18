@@ -1,0 +1,424 @@
+{
+    "data": [
+        {
+            "start": 1.06,
+            "end": 5.3,
+            "str": "Des <trace>? Le Dabou!"
+        },
+        {
+            "start": 6.42,
+            "end": 11.54,
+            "str": "<Viens> Dabou! Montre toi Dabou"
+        },
+        {
+            "start": 31.96,
+            "end": 35.8,
+            "str": "Je te tiens! Sort de là Dabou, n'aie pas <peur>"
+        },
+        {
+            "start": 35.8,
+            "end": 38.14,
+            "str": "<je suis un explorateur> du monde sauvage"
+        },
+        {
+            "start": 38.14,
+            "end": 42.44,
+            "str": "Je suis donc un ami de <toute la nature>. Tu en veux encore?"
+        },
+        {
+            "start": 44.96,
+            "end": 50.1,
+            "str": "<Salut copain>. Laisse pour les autres. Allez, montre toi"
+        },
+        {
+            "start": 53.32,
+            "end": 59.78,
+            "str": "<Tu viens>? N'aie pas peur petit Dabou. Gentil dabou, gentil petit dabou"
+        },
+        {
+            "start": 68.24,
+            "end": 72.02,
+            "str": "Le Dabou, <je l'ai trouvé>. C'est en rire"
+        },
+        {
+            "start": 72.02,
+            "end": 74.96000000000001,
+            "str": "<Est-ce qu'ils sont grands>? Oui, très très grand"
+        },
+        {
+            "start": 74.96000000000001,
+            "end": 78.16,
+            "str": "<Est-ce qu'ils sont très colorés>? Oui très coloré"
+        },
+        {
+            "start": 78.16,
+            "end": 81.9,
+            "str": "<Est-ce qu'ils aiment le chocolat>? Oui, le chocolat..."
+        },
+        {
+            "start": 84.72,
+            "end": 85.72,
+            "str": "<Quelle est cette chose>?"
+        },
+        {
+            "start": 85.72,
+            "end": 87.16,
+            "str": "<siens> Dabou"
+        },
+        {
+            "start": 87.16,
+            "end": 89.7,
+            "str": "il n'y a pas Dabou ça n'existe pas Dabou <ça n'a jamais existé>"
+        },
+        {
+            "start": 94.06,
+            "end": 96.96000000000001,
+            "str": "Va-t'en, et tous t'en aller va-t'en. Vous, <allez>"
+        },
+        {
+            "start": 106.94,
+            "end": 110.22,
+            "str": "<Fais attention>! Vous avez vu sieur Fredricksen"
+        },
+        {
+            "start": 110.34,
+            "end": 111.84,
+            "str": "<Il m'aime bien>"
+        },
+        {
+            "start": 116.06,
+            "end": 118.72,
+            "str": "va-t'en, va-t'en, allez!"
+        },
+        {
+            "start": 127.42,
+            "end": 131.2,
+            "str": "Kevin! Calme toi, c'est monsieur Fredriksen, <il est gentil>"
+        },
+        {
+            "start": 131.2,
+            "end": 133.84,
+            "str": "Kevin? Oui, <j'ai décidé> l'appeler Kevin"
+        },
+        {
+            "start": 135.76,
+            "end": 139.5,
+            "str": "Va-t'en! Du balais, du balais. <C'était moi ça>"
+        },
+        {
+            "start": 144.36,
+            "end": 149.84,
+            "str": "Va-t'en, <allez vous>. Disparais! Va-t'en, disparais"
+        },
+        {
+            "start": 152.74,
+            "end": 156.65,
+            "str": "On peut le garder, s'il vous plaît? <Je le trouverai> la nourriture"
+        },
+        {
+            "start": 156.65,
+            "end": 159.36,
+            "str": "<je le promènerai> et c'est moi qui changerai foin sa cage"
+        },
+        {
+            "start": 161.32,
+            "end": 163.45,
+            "str": "<un explorateur est l'ami de tous>"
+        },
+        {
+            "start": 163.45,
+            "end": 166.0,
+            "str": "l'ami des plantes, <des poissons> et même de petit ours"
+        },
+        {
+            "start": 166.0,
+            "end": 169.02,
+            "str": "Ça n'aurait rimer pas. <Si ça rime>"
+        },
+        {
+            "start": 169.72,
+            "end": 171.9,
+            "str": "<Regardez> Kevin! Quoi?"
+        },
+        {
+            "start": 172.92000000000002,
+            "end": 173.9,
+            "str": "Décent!"
+        },
+        {
+            "start": 174.02,
+            "end": 176.07999999999998,
+            "str": "<de quel droit> et tu monte"
+        },
+        {
+            "start": 178.26,
+            "end": 180.26,
+            "str": "descends <immédiatement>!"
+        },
+        {
+            "start": 183.9,
+            "end": 186.4,
+            "str": "<c'est pas drôle>, te rends compte Ellie"
+        },
+        {
+            "start": 189.46,
+            "end": 192.4,
+            "str": "Ellie, j'ai droit garder ce bel <oiseau>"
+        },
+        {
+            "start": 195.7,
+            "end": 197.4,
+            "str": "elle dit vous <devez accepter>"
+        },
+        {
+            "start": 197.4,
+            "end": 201.24,
+            "str": "<Mais je viens> de lui dire non! Je t'ai dit non! N-O-N."
+        },
+        {
+            "start": 213.16,
+            "end": 215.3,
+            "str": "<je te vois toi> là-bas"
+        },
+        {
+            "start": 216.9,
+            "end": 220.72,
+            "str": "Va-t'en, déguerpis, oust! Va embêter quelqu'un d'autre <pour changer>"
+        },
+        {
+            "start": 221.72,
+            "end": 222.86,
+            "str": "<Tu va bien>?"
+        },
+        {
+            "start": 227.14,
+            "end": 229.32,
+            "str": "<qui est là>?"
+        },
+        {
+            "start": 234.0,
+            "end": 236.76,
+            "str": "<Bonjour monsieur>! On les sauver."
+        },
+        {
+            "start": 236.82,
+            "end": 239.52,
+            "str": "Je suis heureux savoir que d'autres gens <vivent par ici>"
+        },
+        {
+            "start": 239.52,
+            "end": 241.26,
+            "str": "<je vous ai> flairé"
+        },
+        {
+            "start": 241.82,
+            "end": 245.36,
+            "str": "Pardon? <Vous nous avez> flairé?"
+        },
+        {
+            "start": 246.28,
+            "end": 247.94,
+            "str": "<j'ai du flair>"
+        },
+        {
+            "start": 256.98,
+            "end": 259.02,
+            "str": "<vous avez parlé> à un rocher"
+        },
+        {
+            "start": 259.46,
+            "end": 261.78,
+            "str": "celui là a la forme d'<une tortue>"
+        },
+        {
+            "start": 262.44,
+            "end": 265.3,
+            "str": "et celui-là, <vous avez vu>? On dirait un chien"
+        },
+        {
+            "start": 267.26,
+            "end": 269.22,
+            "str": "c'est un chien. Un chien?"
+        },
+        {
+            "start": 269.84,
+            "end": 273.08,
+            "str": "<chez nous> n'a pas voir d'en avoir en habite en <appartement>"
+        },
+        {
+            "start": 274.32,
+            "end": 276.6,
+            "str": "Salut! <C'est sympa le chien>"
+        },
+        {
+            "start": 276.6,
+            "end": 278.84000000000003,
+            "str": "<Votre chien est avec nous>!"
+        },
+        {
+            "start": 279.46,
+            "end": 281.2,
+            "str": "<je me demande> à qui il appartient"
+        },
+        {
+            "start": 281.2,
+            "end": 283.52,
+            "str": "<Assis>! Regardez, il est dressé"
+        },
+        {
+            "start": 283.65999999999997,
+            "end": 285.42,
+            "str": "<donne la patte>, c'est bien"
+        },
+        {
+            "start": 285.42,
+            "end": 286.9,
+            "str": "<dit bonjour>"
+        },
+        {
+            "start": 288.18,
+            "end": 291.24,
+            "str": "serait ce chien qui <vient de dire> bonjour"
+        },
+        {
+            "start": 292.74,
+            "end": 295.38,
+            "str": "je m'appelle Dug, <je ne vous connais pas>"
+        },
+        {
+            "start": 295.54,
+            "end": 297.02,
+            "str": "<et je vous aime>"
+        },
+        {
+            "start": 297.62,
+            "end": 299.38,
+            "str": "<mon maître> m'a fabriqué ce collier"
+        },
+        {
+            "start": 299.38,
+            "end": 300.82,
+            "str": "<mon maître est bon et intelligent>"
+        },
+        {
+            "start": 300.82,
+            "end": 303.28,
+            "str": "il a conçu ces colliers <afin que> je puisse parler"
+        },
+        {
+            "start": 303.28,
+            "end": 304.92,
+            "str": "l'<écureuil>"
+        },
+        {
+            "start": 306.36,
+            "end": 307.86,
+            "str": "mon maître est bon et intelligent"
+        },
+        {
+            "start": 307.9,
+            "end": 309.08,
+            "str": "<mais c'est pas croyable>"
+        },
+        {
+            "start": 309.08,
+            "end": 311.08,
+            "str": "oh si, parce que mon maître est bon et intelligent"
+        },
+        {
+            "start": 311.08,
+            "end": 313.2,
+            "str": "<génial>, à que ce sert ce bouton"
+        },
+        {
+            "start": 313.2,
+            "end": 314.76,
+            "str": "<pourriez vous>..."
+        },
+        {
+            "start": 317.92,
+            "end": 319.64,
+            "str": "<ce serait gentil> d'arrêter"
+        },
+        {
+            "start": 319.64,
+            "end": 320.88,
+            "str": "<ne touche pas> un seul"
+        },
+        {
+            "start": 320.88,
+            "end": 322.88,
+            "str": "c'est peut-être radioactifs ou <je ne sais quoi>"
+        },
+        {
+            "start": 322.88,
+            "end": 327.06,
+            "str": "je suis un fin limier, la meute m'envoyé en mission spéciale <tout seul>"
+        },
+        {
+            "start": 327.1,
+            "end": 329.68,
+            "str": "<Avez-vous vu un oiseau>? Je voudrais en trouver un"
+        },
+        {
+            "start": 329.68,
+            "end": 333.1,
+            "str": "j'en ??? je suis un fin limier, <je vous l'ai dit>?"
+        },
+        {
+            "start": 334.92,
+            "end": 335.98,
+            "str": "<mais c'est un oiseau>"
+        },
+        {
+            "start": 335.98,
+            "end": 338.78,
+            "str": "je n'en ai jamais vu <d'aussi près> mais, c'est un oiseau"
+        },
+        {
+            "start": 338.78,
+            "end": 341.90999999999997,
+            "str": "puis-je ramener cette oiseau comme <prisonnier>"
+        },
+        {
+            "start": 341.90999999999997,
+            "end": 345.86,
+            "str": "oui, oui en banlieue et profites-en pour apprends aboyer <comme un vrai chien>"
+        },
+        {
+            "start": 345.86,
+            "end": 347.86,
+            "str": "<je sais aboyer>"
+        },
+        {
+            "start": 347.86,
+            "end": 349.86,
+            "str": "<et hurler>"
+        },
+        {
+            "start": 353.18,
+            "end": 355.82,
+            "str": "<on peut garder> s'il vous plaît"
+        },
+        {
+            "start": 356.76,
+            "end": 359.48,
+            "str": "<mais c'est un chien qui parle>"
+        },
+        {
+            "start": 359.48,
+            "end": 361.82,
+            "str": "on le paie <une part> c'est un gadget vient"
+        },
+        {
+            "start": 361.82,
+            "end": 363.34,
+            "str": "allons <jusqu'au chute>"
+        },
+        {
+            "start": 363.34,
+            "end": 368.6,
+            "str": "<sois mon prisonnier s'il te plaît>, sois mon prisonnier"
+        }
+    ]
+}

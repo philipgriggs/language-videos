@@ -1,0 +1,124 @@
+{
+    "data": [
+        {
+            "start": 0.34,
+            "end": 2.2,
+            "str": "Que tienes el billete. <No lo pierdas>."
+        },
+        {
+            "start": 2.2,
+            "end": 4.74,
+            "str": "<Es muy importante no lo pierdas de vista>."
+        },
+        {
+            "start": 8.92,
+            "end": 11.06,
+            "str": "<Andén> 9¾?"
+        },
+        {
+            "start": 11.36,
+            "end": 16.16,
+            "str": "Pero Hagrid, <debe de haber> un error. Dice andén 9¾."
+        },
+        {
+            "start": 16.56,
+            "end": 18.98,
+            "str": "<Ese no existe>. Esa si?"
+        },
+        {
+            "start": 41.24,
+            "end": 43.8,
+            "str": "<Discuple>?"
+        },
+        {
+            "start": 46.02,
+            "end": 50.0,
+            "str": "Disculpe, señor. ¿<Dónde> puede encontrar el andén 9¾?"
+        },
+        {
+            "start": 50.0,
+            "end": 54.82,
+            "str": "9¾? <Basta> graciosillo, eh? Andén 9 ¾..."
+        },
+        {
+            "start": 56.5,
+            "end": 57.5,
+            "str": "Muggles?"
+        },
+        {
+            "start": 65.46,
+            "end": 67.86,
+            "str": "Venga Percy, <tu primero>."
+        },
+        {
+            "start": 78.7,
+            "end": 80.1,
+            "str": "Fred, <te toca>."
+        },
+        {
+            "start": 80.1,
+            "end": 81.7,
+            "str": "Él no es Fred, <soy yo>."
+        },
+        {
+            "start": 81.7,
+            "end": 84.32,
+            "str": "En serio, <cómo te puedes> llamar nuestra madre?"
+        },
+        {
+            "start": 84.38,
+            "end": 86.64,
+            "str": "Oy, <perdona> George."
+        },
+        {
+            "start": 89.8,
+            "end": 92.3,
+            "str": "<Era una broma>, yo soy Fred."
+        },
+        {
+            "start": 98.66,
+            "end": 99.66,
+            "str": "Disculpe!"
+        },
+        {
+            "start": 101.97999999999999,
+            "end": 104.58,
+            "str": "<Podría decirme>, como..."
+        },
+        {
+            "start": 105.56,
+            "end": 107.06,
+            "str": "Ah, <cómo llegar adelante>?"
+        },
+        {
+            "start": 107.75999999999999,
+            "end": 111.6,
+            "str": "No te apodes, hijo. <También es el primer año> de Ron en Hogwarts."
+        },
+        {
+            "start": 111.6,
+            "end": 113.3,
+            "str": "<Lo único que tienes que hacer>"
+        },
+        {
+            "start": 113.3,
+            "end": 115.52000000000001,
+            "str": "es ir con decisión <hacia el muro>"
+        },
+        {
+            "start": 115.52000000000001,
+            "end": 117.6,
+            "str": "<entre los andenes> neuve y diez."
+        },
+        {
+            "start": 117.6,
+            "end": 119.44,
+            "str": "Coge carrerillas <si estas nervioso>."
+        },
+        {
+            "start": 119.64,
+            "end": 120.96,
+            "str": "<Buena suerte>."
+        }
+    ]
+}
