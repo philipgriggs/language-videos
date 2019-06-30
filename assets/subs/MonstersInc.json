@@ -58,7 +58,7 @@
         {
             "start": 32.72,
             "end": 37.84,
-            "str": "Con cucharas soperas haremos un túnel bajo la ciudad para soltarla lejos del mundo."
+            "str": "Con <cucharas soperas> haremos un túnel bajo la ciudad para soltarla lejos del mundo."
         },
         {
             "start": 38.84,
@@ -73,22 +73,22 @@
         {
             "start": 41.7,
             "end": 43.1,
-            "str": "No hay más ideas. Cierran negocios."
+            "str": "<No hay más ideas>. Cierran negocios."
         },
         {
             "start": 43.1,
             "end": 44.3,
-            "str": "Un globo? Demasiado caro."
+            "str": "Un globo? <Demasiado caro>."
         },
         {
             "start": 44.3,
             "end": 46.2,
-            "str": "Un tirachinas gigante? Demasiado llamativo."
+            "str": "Un tirachinas <gigante>? Demasiado llamativo."
         },
         {
             "start": 46.2,
             "end": 48.4,
-            "str": "Un caballo de madera enorme? Demasiado griego."
+            "str": "Un caballo de madera <enorme>? Demasiado griego."
         },
         {
             "start": 56.56,
@@ -98,42 +98,42 @@
         {
             "start": 57.68,
             "end": 58.94,
-            "str": "Creo que está cansada."
+            "str": "<Creo que está cansada>."
         },
         {
             "start": 60.24,
             "end": 63.96,
-            "str": "Pués, ¿por qué no le buscas una cama para dormir…"
+            "str": "Pués, ¿<por qué no le buscas una cama para dormir>..."
         },
         {
             "start": 63.96,
             "end": 65.54,
-            "str": "Mientras hago un plan."
+            "str": "Mientras hago <un plan>."
         },
         {
             "start": 68.08,
             "end": 69.7,
-            "str": "Así que, ¿quieres dormir?"
+            "str": "Así que, ¿<quieres dormir>?"
         },
         {
             "start": 69.7,
             "end": 72.5,
-            "str": "¿Tienes sueño? ¿Eso es lo que quieres?"
+            "str": "¿Tienes sueño? ¿<Eso es lo que quieres>?"
         },
         {
             "start": 86.64,
             "end": 89.53999999999999,
-            "str": "Muy bien. Mira, te preparé un rinconcito…"
+            "str": "Muy bien. Mira, <te preparé> un rinconcito…"
         },
         {
             "start": 90.62,
             "end": 91.6,
-            "str": "Que sales mi cama."
+            "str": "<Que sales mi cama>."
         },
         {
             "start": 91.6,
             "end": 93.32,
-            "str": "Me la vas a llenar de gérmenes."
+            "str": "Me la vas a <llenar de gérmenes>."
         },
         {
             "start": 96.28,
@@ -143,7 +143,7 @@
         {
             "start": 96.9,
             "end": 99.66,
-            "str": "De todas formas mi silla es más confortable."
+            "str": "De todas formas <mi silla es más confortable>."
         },
         {
             "start": 100.5,
@@ -153,37 +153,37 @@
         {
             "start": 104.36,
             "end": 105.5,
-            "str": "Acuéstate ella."
+            "str": "Acuéstate <ella>."
         },
         {
             "start": 105.5,
             "end": 107.14,
-            "str": "Sólo es un armario."
+            "str": "<Sólo es un armario>."
         },
         {
             "start": 109.94,
             "end": 111.96000000000001,
-            "str": "Se parece Randall."
+            "str": "<Se parece> Randall."
         },
         {
             "start": 112.75999999999999,
             "end": 114.7,
-            "str": "Randall es tu monstruo."
+            "str": "Randall <es tu monstruo>."
         },
         {
             "start": 114.7,
             "end": 118.0,
-            "str": "Crees que va a entrar por el armario y te vas a asustar."
+            "str": "<Crees que va a entrar por el armario> y te vas a asustar."
         },
         {
             "start": 118.0,
             "end": 120.1,
-            "str": "A ver... ¿cómo se lo explico?"
+            "str": "A ver... ¿<cómo se lo explico>?"
         },
         {
             "start": 120.1,
             "end": 121.16,
-            "str": "Está vacío."
+            "str": "<Está vacío>."
         },
         {
             "start": 121.78,
@@ -193,17 +193,17 @@
         {
             "start": 123.32,
             "end": 125.64,
-            "str": "No hay monstruos aquí!"
+            "str": "<No hay monstruos aquí>!"
         },
         {
             "start": 128.4,
             "end": 132.54,
-            "str": "Bueno, ahora sí... pero no pienso asustarte."
+            "str": "Bueno, <ahora sí>... pero no pienso <asustarte>."
         },
         {
             "start": 132.62,
             "end": 134.28,
-            "str": "No estoy de servicio."
+            "str": "<No estoy de servicio>."
         },
         {
             "start": 138.07999999999998,
@@ -213,17 +213,17 @@
         {
             "start": 139.7,
             "end": 144.0,
-            "str": "Me sentaré aquí hasta que te duermas."
+            "str": "<Me sentaré aquí> hasta que te duermas."
         },
         {
             "start": 146.07999999999998,
             "end": 151.16,
-            "str": "Anda, duérmete... ¡venga ahora!"
+            "str": "Anda, <duérmete>... ¡venga ahora!"
         },
         {
             "start": 152.64,
             "end": 157.57999999999998,
-            "str": "Tú y yo, los dos, ¡a dormir!"
+            "str": "<Tú y yo>, los dos, ¡a dormir!"
         }
     ]
 }
