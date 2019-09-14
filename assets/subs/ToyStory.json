@@ -1,0 +1,364 @@
+{
+    "data": [
+        {
+            "start": 19.66,
+            "end": 22.98,
+            "str": "Buzz Lightyear a mando estelar, <adelante> mando estelar"
+        },
+        {
+            "start": 23.8,
+            "end": 25.92,
+            "str": "mando estelar responda, <me reciben>?"
+        },
+        {
+            "start": 26.5,
+            "end": 28.06,
+            "str": "<por qué no contestan>?"
+        },
+        {
+            "start": 28.66,
+            "end": 30.12,
+            "str": "<Mi nave>!"
+        },
+        {
+            "start": 32.5,
+            "end": 35.52,
+            "str": "Porras! Tardará <semanas> en repararla"
+        },
+        {
+            "start": 36.16,
+            "end": 39.88,
+            "str": "Buzz Lighyear <diario> de abordo fecha estelar 4–0–7–2"
+        },
+        {
+            "start": 39.88,
+            "end": 42.7,
+            "str": "mi nave se ha desviado de su rumbo hacia el <sector> 12"
+        },
+        {
+            "start": 42.7,
+            "end": 45.48,
+            "str": "he hecho un aterrizaje forzoso en un <extraño planeta>"
+        },
+        {
+            "start": 45.48,
+            "end": 47.96,
+            "str": "el impacto debió <despertarme> de mí para sueño"
+        },
+        {
+            "start": 50.34,
+            "end": 52.96,
+            "str": "el terreno <parece un poco> inestable"
+        },
+        {
+            "start": 52.96,
+            "end": 55.66,
+            "str": "aún no tengo lectura de si el aire <se pueda respirar>"
+        },
+        {
+            "start": 55.66,
+            "end": 59.18,
+            "str": "parece no haber signos de vida inteligente <por ningún sitio>"
+        },
+        {
+            "start": 63.26,
+            "end": 65.88,
+            "str": "<Te ha asustado>? No lo pretendía"
+        },
+        {
+            "start": 66.02,
+            "end": 70.66,
+            "str": "Perdón, hola! Me llamo Woody y <este es el cuarto> de Andy"
+        },
+        {
+            "start": 70.92,
+            "end": 72.53999999999999,
+            "str": "<eso es lo que quería decir>"
+        },
+        {
+            "start": 72.53999999999999,
+            "end": 75.3,
+            "str": "y también que ha habido <una pequeña confusión>"
+        },
+        {
+            "start": 75.68,
+            "end": 78.03999999999999,
+            "str": "Este es mi sitio, lo ves? <Esta cama>"
+        },
+        {
+            "start": 78.24,
+            "end": 80.16,
+            "str": "<la autoridad local> ya era hora de que llegaran"
+        },
+        {
+            "start": 80.24,
+            "end": 83.32,
+            "str": "soy Buzz Lightyear <guardián espacial> unidad de protección del universo"
+        },
+        {
+            "start": 83.36,
+            "end": 85.22,
+            "str": "mi nave ha aterrizado <aquí por error>"
+        },
+        {
+            "start": 85.22,
+            "end": 89.16,
+            "str": "si es un error porque verás <la cama es mi sitio>"
+        },
+        {
+            "start": 89.26,
+            "end": 94.03999999999999,
+            "str": "<Necesito reparar> mis turbopropulsores. A unas usáis combustibles fósiles o ya habéis descubierto la fusión de cristales"
+        },
+        {
+            "start": 94.03999999999999,
+            "end": 96.32,
+            "str": "bueno veamos tenemos <pilas alcalinas>"
+        },
+        {
+            "start": 96.58,
+            "end": 98.68,
+            "str": "<Cuidado>! Alto! Quién anda allí?"
+        },
+        {
+            "start": 98.68,
+            "end": 100.94,
+            "str": "No dispares! Calma! <Somos amigos>"
+        },
+        {
+            "start": 100.94,
+            "end": 103.16,
+            "str": "<Conoces> esas formas de vida?"
+        },
+        {
+            "start": 103.16,
+            "end": 105.3,
+            "str": "Son los <juguetes> de Andy. Está bien"
+        },
+        {
+            "start": 105.38,
+            "end": 107.12,
+            "str": "podéis <subir> hasta aquí"
+        },
+        {
+            "start": 107.12,
+            "end": 109.84,
+            "str": "soy Buzz Lightyear <vengo> en son de paz"
+        },
+        {
+            "start": 110.32,
+            "end": 113.75999999999999,
+            "str": "tú sabes cuanto me alegro de que no seas un <dinosaurio>"
+        },
+        {
+            "start": 113.88,
+            "end": 118.7,
+            "str": "bueno gracias, gracias a todos <por vuestra amable bienvenida>"
+        },
+        {
+            "start": 118.88,
+            "end": 120.72,
+            "str": "oye, <para qué sirve> ese botón ?"
+        },
+        {
+            "start": 120.78,
+            "end": 121.78,
+            "str": "te los enseñaré"
+        },
+        {
+            "start": 122.52,
+            "end": 123.74,
+            "str": "Buzz Lightyear <al rescate>!"
+        },
+        {
+            "start": 123.98,
+            "end": 127.42,
+            "str": "Woody <tiene algo parecido> sólo que lo suyo es un cordel"
+        },
+        {
+            "start": 127.42,
+            "end": 130.02,
+            "str": "<pero suena como> si le hubiera atropellado un coche"
+        },
+        {
+            "start": 130.02,
+            "end": 133.58,
+            "str": "o si, no es como este, <es un sistema> de sonido de calidad"
+        },
+        {
+            "start": 133.58,
+            "end": 138.52,
+            "str": "Utilizar un cable de cobre, eh? <Por cierto de dónde eres>? Singapur, Hong Kong?"
+        },
+        {
+            "start": 138.52,
+            "end": 142.68,
+            "str": "o no, <en realidad estoy destinado> en el sector 4 del cuadrante gamma"
+        },
+        {
+            "start": 142.68,
+            "end": 147.38,
+            "str": "<como miembro> de la unidad del cuerpo de élite de los guardianes espaciales para la protección del universo"
+        },
+        {
+            "start": 147.38,
+            "end": 151.2,
+            "str": "defiendo la galaxia de la amenaza de <invasión> del Malvado Emperador Zurg"
+        },
+        {
+            "start": 151.2,
+            "end": 154.24,
+            "str": "implacable <enemigo> de la alianza galáctica"
+        },
+        {
+            "start": 154.88,
+            "end": 158.28,
+            "str": "<en serio> yo soy de play school, y yo de Mattel"
+        },
+        {
+            "start": 158.28,
+            "end": 162.18,
+            "str": "Bueno, <en realidad> no soy de Mattel, soy de una empresa más pequeña que fue comprada..."
+        },
+        {
+            "start": 162.98,
+            "end": 165.0,
+            "str": "se diría que <nunca han visto un juguete nuevo>"
+        },
+        {
+            "start": 165.0,
+            "end": 169.54,
+            "str": "Pues claro, <mírale>! Tiene más chismes que una navaja suiza multiusos"
+        },
+        {
+            "start": 171.22,
+            "end": 173.98,
+            "str": "<Ten cuidado>! No querrás estar en medio cuando se dispara mi láser"
+        },
+        {
+            "start": 174.4,
+            "end": 177.56,
+            "str": "Un <láser>? Cómo es que no tienes un <láser> Woody?"
+        },
+        {
+            "start": 177.56,
+            "end": 180.6,
+            "str": "<no es un láser>, es una bombillita que parpadea"
+        },
+        {
+            "start": 180.6,
+            "end": 183.94,
+            "str": "Qué le pasa? Envidia su láser. Bueno ya es <suficiente>!"
+        },
+        {
+            "start": 183.94,
+            "end": 187.42,
+            "str": "mirad <todos estamos muy impresionados> con el nuevo juguete de Andy"
+        },
+        {
+            "start": 189.9,
+            "end": 193.54,
+            "str": "perdóname parece que <la palabra que estás buscando> es guardián espacial"
+        },
+        {
+            "start": 193.54,
+            "end": 198.34,
+            "str": "la palabra que estoy buscando <no la puedo decir> porque hay juguetes preescolares delante"
+        },
+        {
+            "start": 198.34,
+            "end": 201.54,
+            "str": "Te estás poniendo algo <tenso>, no? El señor Lightyear"
+        },
+        {
+            "start": 201.54,
+            "end": 205.86,
+            "str": "siento curiosidad, que suele <hacer en realidad> guardián espacial"
+        },
+        {
+            "start": 205.86,
+            "end": 209.9,
+            "str": "No es un guardián espacial! <No lucha contra el mal>"
+        },
+        {
+            "start": 209.9,
+            "end": 212.76,
+            "str": "ni dispara láseres, <ni vuela>! Disculpa..."
+        },
+        {
+            "start": 215.4,
+            "end": 219.6,
+            "str": "Que <alas>! Muy bien! El que, el que?"
+        },
+        {
+            "start": 219.66,
+            "end": 222.56,
+            "str": "<Son de plástico>! No puede volar!"
+        },
+        {
+            "start": 222.56,
+            "end": 225.98,
+            "str": "son de una aleación de terilio <carbono> y sí puedo volar"
+        },
+        {
+            "start": 225.98,
+            "end": 229.52,
+            "str": "No, no puedes. Sí, puedo"
+        },
+        {
+            "start": 232.18,
+            "end": 234.7,
+            "str": "<podría volar> por toda esta habitación con los ojos cerrados"
+        },
+        {
+            "start": 234.7,
+            "end": 237.12,
+            "str": "muy bien chulo <espacial>, demuéstralo"
+        },
+        {
+            "start": 237.18,
+            "end": 240.94,
+            "str": "<Pues claro> que lo haré! Apartaos todos"
+        },
+        {
+            "start": 248.5,
+            "end": 252.26,
+            "str": "<Hasta el infinito>, y más allá!"
+        },
+        {
+            "start": 283.42,
+            "end": 285.54,
+            "str": "ya tengo mi <compañero> de mudanza"
+        },
+        {
+            "start": 287.94,
+            "end": 289.7,
+            "str": "eso no ha <sido> volar"
+        },
+        {
+            "start": 289.7,
+            "end": 291.88,
+            "str": "eso ha sido caer <con estilo>"
+        },
+        {
+            "start": 292.24,
+            "end": 294.98,
+            "str": "Tío las muñecas deben estar locas por ti, puedes <enseñarme> eso?"
+        },
+        {
+            "start": 296.2,
+            "end": 299.06,
+            "str": "Vaya, es algo <increíble>! Cállate!"
+        },
+        {
+            "start": 299.56,
+            "end": 302.8,
+            "str": "dentro de un par de días todo será <igual que antes>, ya lo verás"
+        },
+        {
+            "start": 303.78,
+            "end": 307.22,
+            "str": "<estoy seguro>, aún soy el juguete <favorito> de andy"
+        }
+    ]
+}

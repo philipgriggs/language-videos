@@ -9,15 +9,15 @@ Scene {
     signal sceneChange(string scene)
     signal loadVideo(string movFileName, string subsFileName, string language, bool widescreen)
 
-    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Johnny English', 'Vice Versa', 'Vice Versa (2)', 'Là-haut', 'Le Bossu de Notre Dame', 'Buscando a Nemo', 'Harry Potter', 'Harry Potter (2)', 'Monsters Inc']
-    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4', 'Vice Versa 2.mp4', 'Up.mp4', 'Le Bossu de Notre Dame 2.mp4', 'Finding Nemo.mp4', 'Harry Potter.mp4', 'Harry Potter 2.mp4', 'Monsters Inc.mp4']
-    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', 'JohnnyEnglish.json', 'ViceVersa.json', 'ViceVersa2.json', 'Up.json', 'LeBossuDeNotreDame2.json', 'FindingNemo.json', 'HarryPotter.json', 'HarryPotter2.json', 'MonstersInc.json']
-    property var thumbnailFiles: ['LaLaLandSprite/12.jpg', 'BelleEtLaBeteSprite/13.jpg', 'JohnnyEnglishSprite/12.jpg', 'JohnnyEnglishSprite2/12.jpg', 'ViceVersaSprite/12.jpg', 'ViceVersaSprite2/10.jpg', 'UpSprite/12.jpg', 'HunchbackOfNotreDameSprite/14.jpg', 'FindingNemoSprite/12.jpg', 'HarryPotterSprite/12.jpg', 'HarryPotterSprite2/12.jpg', 'MonstersIncSprite/12.jpg']
-    property var thumbnailFgFiles: ['', '', '', '', '', '', 'UpFg.png', '', 'FindingNemoFg.png', '', '', '']
-    property var thumbnailSpriteFiles: ['LaLaLandSprite', 'BelleEtLaBeteSprite', 'JohnnyEnglishSprite', 'JohnnyEnglishSprite2', 'ViceVersaSprite', 'ViceVersaSprite2', 'UpSprite', 'HunchbackOfNotreDameSprite', 'FindingNemoSprite', 'HarryPotterSprite', 'HarryPotterSprite2', 'MonstersIncSprite']
-    property var thumbnailSpriteFrames: [12, 13, 12, 12, 12, 10, 12, 14, 12, 12, 12, 12]
-    property var language: ['french', 'french', 'french', 'french', 'french', 'french', 'french', 'french', 'spanish', 'spanish', 'spanish', 'spanish']
-    property var widescreen: [true, true, true, true, false, false, false, false, false, true, true, false]
+    property var dispName: ['La La Land', 'Belle et La Bete', 'Johnny English', 'Johnny English', 'Vice Versa', 'Vice Versa (2)', 'Là-haut', 'Le Bossu de Notre Dame', 'Buscando a Nemo', 'Harry Potter', 'Harry Potter (2)', 'Monsters Inc', 'Toy Story']
+    property var movFiles: ['La La Land 1.m4v', 'Belle et La Bete.mp4', 'Johnny English - Contre attaque.mp4', 'Johnny English - Contre attaque.mp4', 'Vice Versa 1.mp4', 'Vice Versa 2.mp4', 'Up.mp4', 'Le Bossu de Notre Dame 2.mp4', 'Finding Nemo.mp4', 'Harry Potter.mp4', 'Harry Potter 2.mp4', 'Monsters Inc.mp4', 'Toy Story.mp4']
+    property var subsFiles: ['LaLaLand.json', 'BelleEtLaBete.json', 'JohnnyEnglish.json', 'JohnnyEnglish.json', 'ViceVersa.json', 'ViceVersa2.json', 'Up.json', 'LeBossuDeNotreDame2.json', 'FindingNemo.json', 'HarryPotter.json', 'HarryPotter2.json', 'MonstersInc.json', 'ToyStory.json']
+    property var thumbnailFiles: ['LaLaLandSprite/12.jpg', 'BelleEtLaBeteSprite/13.jpg', 'JohnnyEnglishSprite/12.jpg', 'JohnnyEnglishSprite2/12.jpg', 'ViceVersaSprite/12.jpg', 'ViceVersaSprite2/10.jpg', 'UpSprite/12.jpg', 'HunchbackOfNotreDameSprite/14.jpg', 'FindingNemoSprite/12.jpg', 'HarryPotterSprite/12.jpg', 'HarryPotterSprite2/12.jpg', 'MonstersIncSprite/12.jpg', 'ToyStorySprite/12.jpg']
+    property var thumbnailFgFiles: ['', '', '', '', '', '', 'UpFg.png', '', 'FindingNemoFg.png', '', '', '', '']
+    property var thumbnailSpriteFiles: ['LaLaLandSprite', 'BelleEtLaBeteSprite', 'JohnnyEnglishSprite', 'JohnnyEnglishSprite2', 'ViceVersaSprite', 'ViceVersaSprite2', 'UpSprite', 'HunchbackOfNotreDameSprite', 'FindingNemoSprite', 'HarryPotterSprite', 'HarryPotterSprite2', 'MonstersIncSprite', 'ToyStorySprite']
+    property var thumbnailSpriteFrames: [12, 13, 12, 12, 12, 10, 12, 14, 12, 12, 12, 12, 12]
+    property var language: ['french', 'french', 'french', 'french', 'french', 'french', 'french', 'french', 'spanish', 'spanish', 'spanish', 'spanish', 'spanish']
+    property var widescreen: [true, true, true, true, false, false, false, false, false, true, true, false, false]
 
     function alignMiddle() {
         listView.positionViewAtIndex(listView.model * 0.5 - (listView.numberOfItems > 2 ? 1 : 0), ListView.SnapPosition)
